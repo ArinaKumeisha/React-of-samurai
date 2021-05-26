@@ -1,0 +1,25 @@
+
+
+.nav{
+    grid-area: n;
+    background-color:lightcoral;
+    padding: 20px;
+}
+
+.item a{
+    color:white;
+    text-decoration: none
+}
+a.activeLink{
+    color:gold;
+}
+
+.item {
+    color:white
+}
+.post{
+    color:red;
+}
+.item.active{
+    color:gold
+}
