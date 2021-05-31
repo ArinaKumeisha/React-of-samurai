@@ -23,9 +23,11 @@ export type FriendsType= {
     img:string
 }
 
+
+
 export type ProfilePageType = {
     posts: Array<PostsType>
-
+    newPostText:string
 }
 
 export type DialogsPageType = {
@@ -46,11 +48,14 @@ export type RootStateType = {
 
 
 export let state: RootStateType = {
+
     profilePage: {
+        newPostText: "it-camasutra",
         posts: [
             {id: 1, message: "Hello, how are you?", likeCount: 15},
             {id: 2, message: "It's my first post", likeCount: 18},
         ],
+
     },
     dialogsPage: {
         dialogs: [
@@ -75,15 +80,19 @@ export let state: RootStateType = {
     }
 }
 export let addPost=(postMessage:string)=>{
-    let newPost:PostsType={
+    const newPost:PostsType={
         id:5,
-        message:postMessage,
+        message: state.profilePage.newPostText,
         likeCount:0
     }
     state.profilePage.posts.unshift(newPost)
     rerenderEntireTree(state)
 }
 
+export let changeText=(newText: string) =>{
+    state.profilePage.newPostText=newText
+    rerenderEntireTree(state)
+}
 
 
 

@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./Friends.module.css"
-import { SideBarPageType} from "../../redux/state";
+import {SideBarPageType} from "../../redux/state";
 
 
 /*type Sidebar = {
