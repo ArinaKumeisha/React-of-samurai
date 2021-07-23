@@ -1,18 +1,19 @@
 import React from "react";
 import s from "./post.module.css"
-import {PostsType} from "../../../../redux/state";
+import {PostsType} from "../../../../redux/store";
 
-const Post = (props:PostsType) => {
+
+export const Post = (props:PostsType) => {
 
     return (
         <div className={s.item}>
-            < img src="https://www.fotoprizer.ru/img_inf/st_221.jpg"/>
             {props.message}
 
             <div>
-                <span>like </span>{props.likeCount}
+                <span>like </span>{props.likeCount}<div><img src={props.img}/></div>
             </div>
-        </div>
-)
+                </div>
+                )
+
 }
 export default Post;

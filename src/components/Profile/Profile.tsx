@@ -1,27 +1,19 @@
 import React from 'react';
-/*import s from "./Profile.module.css"*/
-import MyPosts from "./myPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {changeText, PostsType, ProfilePageType} from "../../redux/state";
+import MyPostsContainer from "./myPosts/MyPostsContainer";
 
-type PropsType = {
-    addPost: (postMessage: string) => void
-    changeText: (newText: string) => void
+/*type ProfilePropsType ={
     posts: Array<PostsType>
     newPostText: string
+    changeNewMessage: (e: ChangeEvent<HTMLTextAreaElement>) => void
+    sendNewMessage: () => void
+}*/
 
-}
-
-const Profile = (props: PropsType) => {
+const Profile = () => {
     return (
-
-        < div>
+        <div>
             <ProfileInfo/>
-            <MyPosts posts={props.posts}
-                     addPost={props.addPost}
-                     newPostText={props.newPostText}
-                     changeText={props.changeText}
-            />
+            <MyPostsContainer/>
         </div>
     )
 }

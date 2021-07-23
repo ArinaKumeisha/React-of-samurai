@@ -1,0 +1,10 @@
+
+.photo{
+    width: 70px;
+    height: 70px;
+    border-radius:40px
+}
+
+.selected {
+    font-weight: bold;
+}
