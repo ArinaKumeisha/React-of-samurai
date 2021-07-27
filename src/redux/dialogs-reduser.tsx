@@ -1,4 +1,4 @@
-import {ActionsType} from "./redux_store";
+import {ActionsType} from "./profile-reducer";
 
 
 export type MessagesType = {
@@ -54,7 +54,6 @@ let initialState: InitialStateType= {
 
 
 export const dialogsReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
-
     switch (action.type) {
         case "UP-DATE-NEW-MESSAGE-TEXT":
             return {

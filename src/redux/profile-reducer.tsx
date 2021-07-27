@@ -1,5 +1,11 @@
 import {sendMessageAC, upDateNewMessageTextAC,} from "./dialogs-reduser";
-import {followAC, setUsersAC, unFollowAC} from "./users-reducers";
+import {
+    followAC,
+    setCurrentPageAC,
+    setTotalUserCountAC,
+    setUsersAC,
+    unFollowAC
+} from "./users-reducers";
 
 
 // reducer принимает часть стэйта и action, у которого как минимум есть type
@@ -18,7 +24,9 @@ export type ActionsType =
     ReturnType<typeof sendMessageAC> |
     ReturnType<typeof followAC>|
     ReturnType<typeof unFollowAC>|
-    ReturnType<typeof setUsersAC>
+    ReturnType<typeof setUsersAC> |
+    ReturnType<typeof setCurrentPageAC> |
+    ReturnType<typeof setTotalUserCountAC>
 
 type InitialStateType = typeof initialState
 

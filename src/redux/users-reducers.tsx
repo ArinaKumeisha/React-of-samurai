@@ -10,18 +10,23 @@ export type UserType = {
         large: string
     },
     followed: boolean
-   /* location: { country: string, city: string }*/
+
 }
 export type InitialStateType = {
     users: Array<UserType>
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
 }
 
-const initialState: InitialStateType = {
-    users: []
+export const initialState: InitialStateType = {
+    users: [],
+    pageSize: 10,   // количество userov на одной странице
+    totalUsersCount: 20,  // сколько всего пользователей
+    currentPage: 4   // текущая страница которую просматриваем
 }
 
-export const usersReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType=> {
-
+export const usersReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
         case "FOLLOW":
             return {
@@ -32,6 +37,7 @@ export const usersReducer = (state: InitialStateType = initialState, action: Act
                     return u
                 })
             }
+
         case "UNFOLLOW":
             return {
                 ...state, users: state.users.map(u => {
@@ -42,32 +48,49 @@ export const usersReducer = (state: InitialStateType = initialState, action: Act
                 })
             }
         case "SET_USERS":
-            return {...state, users: [...state.users, ...action.users]}
+            return {...state, users: action.users}
+        case "SET_CURRENT_PAGE":
+            return {...state, currentPage: action.currentPage}
+        case "SET-TOTAL_USER_COUNT":
+            return {...state, totalUsersCount: action.count}
         default:
             return state
     }
 }
 
 
-    export const followAC = (userID: number) => {
-        return {
-            type: "FOLLOW",
-            userID: userID
-        } as const
-    }
+export const followAC = (userID: number) => {
+    return {
+        type: "FOLLOW",
+        userID: userID
+    } as const
+}
 
-    export const unFollowAC = (userID: number) => {
-        return {
-            type: "UNFOLLOW",
-            userID: userID
-        } as const
-    }
+export const unFollowAC = (userID: number) => {
+    return {
+        type: "UNFOLLOW",
+        userID: userID
+    } as const
+}
 
 export const setUsersAC = (users: Array<UserType>) => {
     return {
         type: "SET_USERS",
         users: users
 
+    } as const
+}
+
+export const setCurrentPageAC = (currentPage: number) => {
+    return {
+        type: "SET_CURRENT_PAGE",
+        currentPage,
+    } as const
+}
+export const setTotalUserCountAC = (totalUsersCount: number) => {
+    return {
+        type: "SET-TOTAL_USER_COUNT",
+       count: totalUsersCount
     } as const
 }
 
