@@ -1,14 +1,17 @@
-import {addPostAC, changeTextareaAC, profileReducer} from "./profile-reducer";
+export {}/*
+//@ts-ignore
 import {dialogsReducer, sendMessageAC, upDateNewMessageTextAC} from "./dialogs-reduser";
+//@ts-ignore
+import {addPostAC, changeTextAC, profileReducer} from "./profile-reducer";
 
 
 
-export type MessagesType = {
+ type MessagesType = {
     id: number
     message: string
 }
 
-export type DialogsType = {
+ type DialogsType = {
     id: number
     name: string
     img: string
@@ -34,7 +37,7 @@ export type PostsType = {
 }
 
 
-export type RootStateType = {
+ type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
 
@@ -51,7 +54,7 @@ export type RootStateType = {
 
 type ActionsType =
     ReturnType<typeof addPostAC> |
-    ReturnType<typeof changeTextareaAC> |
+    ReturnType<typeof changeTextAC> |
     ReturnType<typeof upDateNewMessageTextAC> |
     ReturnType<typeof sendMessageAC>
 
@@ -121,7 +124,7 @@ const store: StoreType = {
     getState() {
         return this._state
     },
-    dispatch(action: ActionsType) {  // {Type: "ADD-POST"}
+    dispatch(action:any) {  // {Type: "ADD-POST"}
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
         this._onChange() // на подобие subscrybe, уведомили подписчика об изменениях
@@ -132,3 +135,4 @@ const store: StoreType = {
 window.store = store
 
 // export default store;
+*/

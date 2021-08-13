@@ -1,37 +1,82 @@
-import {sendMessageAC, upDateNewMessageTextAC,} from "./dialogs-reduser";
-import {
-    followAC,
-    setCurrentPageAC,
-    setTotalUserCountAC,
-    setUsersAC,
-    unFollowAC
-} from "./users-reducers";
-
-
+/*import React from 'react';*/
 // reducer принимает часть стэйта и action, у которого как минимум есть type
 //  и возвращает преобразованный state
+
+
+export enum ACTION_TYPE {
+    ADD_POST = "ADD-POST",
+    CHANGE_TEXT = "CHANGE-TEXT",
+    SEND_MESSAGE = "SEND-MESSAGE",
+    UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT",
+    FOLLOW = "FOLLOW",
+    UN_FOLLOW = "UNFOLLOW",
+    SET_USERS = "SET_USERS",
+    SET_CURRENT_PAGE = "SET_CURRENT_PAGE",
+    SET_TOTAL_USER_COUNT = "SET-TOTAL_USER_COUNT",
+    TOGGLE_IS_FETCHING = "TOGGLE-IS-FETCHING",
+    SET_USER_PROFILE = "SET-USER-PROFILE",
+    SET_USER_DATA = "SET-USER-DATA",
+    TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE-IS_FOLLOWING-PROGRESS"
+}
+
 export type PostsType = {
     id: number
     message: string
     likeCount: number
     img: string
 }
+export type AddPostAT = {
+    type: ACTION_TYPE.ADD_POST
+}
+export type ChangeTextAT = {
+    type: ACTION_TYPE.CHANGE_TEXT,
+    newText: string
+}
+export type setUserProfileAT = {
+    type: ACTION_TYPE.SET_USER_PROFILE,
+    profile: any
+}
 
-export type ActionsType =
-    ReturnType<typeof addPostAC> |
-    ReturnType<typeof changeTextareaAC> |
-    ReturnType<typeof upDateNewMessageTextAC> |
-    ReturnType<typeof sendMessageAC> |
-    ReturnType<typeof followAC>|
-    ReturnType<typeof unFollowAC>|
-    ReturnType<typeof setUsersAC> |
-    ReturnType<typeof setCurrentPageAC> |
-    ReturnType<typeof setTotalUserCountAC>
 
-type InitialStateType = typeof initialState
+export type ProfileActionType =
+    AddPostAT |
+    ChangeTextAT |
+    setUserProfileAT
+
+
+// можно типизировать так
+// export type ActionsType =
+//     ReturnType<typeof changeTextareaAC> |
+//     ReturnType<typeof upDateNewMessageTextAC> |
+//     ReturnType<typeof sendMessageAC> |
+//     ReturnType<typeof followAC> |
+//     ReturnType<typeof unFollowAC> |
+//     ReturnType<typeof setUsersAC> |
+//     ReturnType<typeof setCurrentPageAC> |
+//     ReturnType<typeof setTotalUserCountAC>
+
+export type InitialStateType = typeof initialState
 
 let initialState = {
     newPostText: "",
+    profile: null,
+    /*profile: {
+        "aboutMe": "",
+        userId: "",
+        lookingForAJob: false,
+        lookingForAJobDescription: "",
+        fullName: "",
+        contacts: {github: "",
+            vk: "",
+            facebook: "",
+            instagram: "",
+            twitter: "",
+            website: "",
+            youtube: "",
+            mainLink: "",
+        },
+        photos: { small: "", large: "" }
+    },*/
     posts: [
         {
             id: 2,
@@ -46,11 +91,12 @@ let initialState = {
             img: "https://www.fotoprizer.ru/img_inf/st_221.jpg"
         },
     ] as Array<PostsType>,
+
 }
 
-export const profileReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
+export const profileReducer = (state: InitialStateType = initialState, action: ProfileActionType): InitialStateType => {
     switch (action.type) {
-        case "ADD-POST":
+        case ACTION_TYPE.ADD_POST:
             const newPost: PostsType = {
                 id: new Date().getTime(),
                 message: state.newPostText,
@@ -62,29 +108,37 @@ export const profileReducer = (state: InitialStateType = initialState, action: A
                 posts: [newPost, ...state.posts],
                 newPostText: ""
             }
-
-
-        case "CHANGE-NEW-TEXT-CALLBACK":
+        case ACTION_TYPE.CHANGE_TEXT:
             return {
                 ...state,
                 newPostText: action.newText
+            }
+        case ACTION_TYPE.SET_USER_PROFILE:
+            return {
+                ...state,
+                profile: action.profile
             }
         default:
             return state
     }
 }
-export const addPostAC = () => {
+export const addPostAC = (): AddPostAT => {
     return {
-        type: "ADD-POST",
+        type: ACTION_TYPE.ADD_POST,
     } as const
 }
 
-export const changeTextareaAC = (newText: string) => {
+export const changeTextAC = (newText: string): ChangeTextAT => {
     return {
-        type: "CHANGE-NEW-TEXT-CALLBACK",
-        newText: newText
+        type: ACTION_TYPE.CHANGE_TEXT,
+        newText,
     } as const
 }
-
+export const setUserProfile = (profile: any) => {
+    return {
+        type: ACTION_TYPE.SET_USER_PROFILE,
+        profile
+    } as const
+}
 
 

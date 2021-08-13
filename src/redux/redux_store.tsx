@@ -1,7 +1,8 @@
 import {combineReducers, createStore} from "redux";
 import {profileReducer} from "./profile-reducer";
 import {dialogsReducer} from "./dialogs-reduser";
-import {usersReducer} from "./users-reducers";
+import {usersReducer} from "./users-reducer";
+import {authReducer} from "./auth-reducer";
 
 
 /*export type ActionsType =
@@ -15,7 +16,8 @@ import {usersReducer} from "./users-reducers";
 let rootReducer = combineReducers({              //rootReducer возвращает state
     profilePage: profileReducer,  //это наш целый стэйт
     dialogsPage: dialogsReducer,  // ключ: значение
-    usersPage: usersReducer
+    usersPage: usersReducer,
+    auth: authReducer,
 })
 
 export type AppStateType=ReturnType<typeof rootReducer>   //  ReturnType -> дай мне  возвращаемый тип rootReducera

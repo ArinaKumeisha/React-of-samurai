@@ -13,11 +13,10 @@ export type MapDispatchPropsType = {
     changeNewMessage: (newMessage: string) => void
     sendNewMessage: () => void
 }
-export type DialogsPropsType=MapStatePropsType & MapDispatchPropsType
+export type DialogsPropsType = MapStatePropsType & MapDispatchPropsType
 
 
-
-const mapStateToProps = (state: AppStateType): MapStatePropsType=> {   // AppStateType это type всего нашего state!!! и возвращает частичку state из редьюсера
+const mapStateToProps = (state: AppStateType): MapStatePropsType => {   // AppStateType это type всего нашего state!!! и возвращает частичку state из редьюсера
     return {
         dialogsPage: state.dialogsPage
     }

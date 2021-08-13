@@ -1,4 +1,4 @@
-import {ActionsType} from "./profile-reducer";
+import {ACTION_TYPE} from "./profile-reducer";
 
 
 export type MessagesType = {
@@ -12,15 +12,23 @@ export type DialogsType = {
     img: string
 }
 
-export type InitialStateType= {
+export type InitialStateType = {
     dialogs: Array<DialogsType>
     messages: Array<MessagesType>
     newMessageText: string
 }
+type SendMessageAT = {
+    type: ACTION_TYPE.SEND_MESSAGE
+}
+type UpdateMessageTextAT = {
+    type: ACTION_TYPE.UPDATE_NEW_MESSAGE_TEXT
+    newMessage: string
 
+}
+type DialogActionType = SendMessageAT | UpdateMessageTextAT
 /*export type InitialStateType = typeof initialState*/
 
-let initialState: InitialStateType= {
+let initialState: InitialStateType = {
     dialogs: [
         {
             id: 1,
@@ -53,20 +61,20 @@ let initialState: InitialStateType= {
 }
 
 
-export const dialogsReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
+export const dialogsReducer = (state: InitialStateType = initialState, action: DialogActionType): InitialStateType => {
     switch (action.type) {
-        case "UP-DATE-NEW-MESSAGE-TEXT":
+        case ACTION_TYPE.UPDATE_NEW_MESSAGE_TEXT:
             return {
                 ...state, newMessageText: action.newMessage
             }
-        case "SEND-MESSAGE":
+        case ACTION_TYPE.SEND_MESSAGE:
             const nextMessage: MessagesType = {
                 id: new Date().getTime(),
                 message: state.newMessageText
             }
 
             return {
-                ...state, messages:[nextMessage,...state.messages],
+                ...state, messages: [nextMessage, ...state.messages],
                 newMessageText: ""
             }
 
@@ -75,14 +83,16 @@ export const dialogsReducer = (state: InitialStateType = initialState, action: A
     }
 }
 
-export const upDateNewMessageTextAC = (newMessage: string) => {
+export const upDateNewMessageTextAC = (newMessage: string): UpdateMessageTextAT => {
     return {
-        type: "UP-DATE-NEW-MESSAGE-TEXT",
+        type: ACTION_TYPE.UPDATE_NEW_MESSAGE_TEXT,
         newMessage: newMessage
     } as const
 }
-export const sendMessageAC = () => {
+export const sendMessageAC = (): SendMessageAT => {
     return (
-        {type: "SEND-MESSAGE"}
+        {
+            type: ACTION_TYPE.SEND_MESSAGE
+        }
     ) as const
 }

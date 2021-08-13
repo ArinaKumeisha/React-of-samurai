@@ -1,18 +1,12 @@
 import React from 'react';
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import ProfileInfo, {ProfileType} from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./myPosts/MyPostsContainer";
 
-/*type ProfilePropsType ={
-    posts: Array<PostsType>
-    newPostText: string
-    changeNewMessage: (e: ChangeEvent<HTMLTextAreaElement>) => void
-    sendNewMessage: () => void
-}*/
 
-const Profile = () => {
+const Profile = (props: ProfileType)=> {
     return (
         <div>
-            <ProfileInfo/>
+            <ProfileInfo profile={props.profile}/>
             <MyPostsContainer/>
         </div>
     )
