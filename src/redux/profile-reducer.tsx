@@ -3,19 +3,22 @@
 //  и возвращает преобразованный state
 
 
+import {Dispatch} from "redux";
+import {usersAPI} from "../api/api";
+
 export enum ACTION_TYPE {
     ADD_POST = "ADD-POST",
     CHANGE_TEXT = "CHANGE-TEXT",
     SEND_MESSAGE = "SEND-MESSAGE",
     UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT",
-    FOLLOW = "FOLLOW",
-    UN_FOLLOW = "UNFOLLOW",
+    FOLLOW_SUCCES = "FOLLOW_SUCCES",
+    UN_FOLLOW_SUCCESS = "UN_FOLLOW_SUCCESS",
     SET_USERS = "SET_USERS",
     SET_CURRENT_PAGE = "SET_CURRENT_PAGE",
     SET_TOTAL_USER_COUNT = "SET-TOTAL_USER_COUNT",
     TOGGLE_IS_FETCHING = "TOGGLE-IS-FETCHING",
-    SET_USER_PROFILE = "SET-USER-PROFILE",
-    SET_USER_DATA = "SET-USER-DATA",
+    SET_USER_PROFILE_SUCCESS = "SET_USER_PROFILE_SUCCESS",
+    SET_USER_DATA_SUCCESS = "SET_USER_DATA_SUCCESS",
     TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE-IS_FOLLOWING-PROGRESS"
 }
 
@@ -32,8 +35,8 @@ export type ChangeTextAT = {
     type: ACTION_TYPE.CHANGE_TEXT,
     newText: string
 }
-export type setUserProfileAT = {
-    type: ACTION_TYPE.SET_USER_PROFILE,
+export type setUserProfileSuccessAT = {
+    type: ACTION_TYPE.SET_USER_PROFILE_SUCCESS,
     profile: any
 }
 
@@ -41,7 +44,7 @@ export type setUserProfileAT = {
 export type ProfileActionType =
     AddPostAT |
     ChangeTextAT |
-    setUserProfileAT
+    setUserProfileSuccessAT
 
 
 // можно типизировать так
@@ -113,7 +116,7 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
                 ...state,
                 newPostText: action.newText
             }
-        case ACTION_TYPE.SET_USER_PROFILE:
+        case ACTION_TYPE.SET_USER_PROFILE_SUCCESS:
             return {
                 ...state,
                 profile: action.profile
@@ -134,11 +137,19 @@ export const changeTextAC = (newText: string): ChangeTextAT => {
         newText,
     } as const
 }
-export const setUserProfile = (profile: any) => {
+export const setUserProfileSuccess = (profile: any) => {
     return {
-        type: ACTION_TYPE.SET_USER_PROFILE,
+        type: ACTION_TYPE.SET_USER_PROFILE_SUCCESS,
         profile
     } as const
 }
+export const setUserProfile = (userId: string) => {
+    return (dispatch: Dispatch<ProfileActionType>) =>{
+        usersAPI.getUserProfile(userId)
+            .then(response => {
+                dispatch(setUserProfileSuccess(response.data))
+            })
+    }
+    }
 
 

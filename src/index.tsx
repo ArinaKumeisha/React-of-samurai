@@ -17,8 +17,6 @@ import {store} from './redux/redux_store';
         document.getElementById('root')
     );
 
-    //@ts-ignore
-window.store=store.getState()
 
 
 

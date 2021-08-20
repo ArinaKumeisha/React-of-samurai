@@ -1,11 +1,13 @@
 import {ACTION_TYPE} from "./profile-reducer";
+import {Dispatch} from "redux";
+import {authAPI} from "../api/api";
 
 
 export const initialState = {
     id: null,
     email: null,
     login: null,
-    isAuth: true,
+    isAuth: false,
 }
 export type InitialStateSetUserType = {
     id: number | null
@@ -13,17 +15,17 @@ export type InitialStateSetUserType = {
     login: string | null
     isAuth: boolean
 }
-// export type InitialStateType = typeof initialState
 
 type AuthActionType =
-    ReturnType<typeof setAuthUserData>
+    ReturnType<typeof setAuthUserDataSucces>
 
-export const authReducer = (state: InitialStateSetUserType = initialState ,  action: AuthActionType): InitialStateSetUserType => {
+export const authReducer = (state: InitialStateSetUserType = initialState, action: AuthActionType): InitialStateSetUserType => {
     switch (action.type) {
-        case ACTION_TYPE.SET_USER_DATA:
+        case ACTION_TYPE.SET_USER_DATA_SUCCESS:
+            debugger
             return {
                 ...state,
-                ...action,
+                ...action.payLoad,
                 isAuth: true,
             }
 
@@ -33,12 +35,24 @@ export const authReducer = (state: InitialStateSetUserType = initialState ,  act
 }
 
 
-
-export const setAuthUserData = (payLoad: InitialStateSetUserType) => {  // функции AC
+export const setAuthUserDataSucces = (payLoad: InitialStateSetUserType) => {  // функции AC
     return {
-        type: ACTION_TYPE.SET_USER_DATA,
+        type: ACTION_TYPE.SET_USER_DATA_SUCCESS,
         payLoad
-        } as const
+    } as const
 }
+
+export const setAuthUserData = () => {
+    return (dispatch: Dispatch<AuthActionType>) => {
+        authAPI.me()
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(setAuthUserDataSucces(response.data.data))
+                }
+            })
+    }
+}
+
+
 
 

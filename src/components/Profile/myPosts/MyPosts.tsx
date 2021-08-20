@@ -4,26 +4,26 @@ import Post from "./Post/Post";
 import {MyPostPropsType} from "./MyPostsContainer";
 
 
-
 function MyPosts(props: MyPostPropsType) {
-const changeTextHandler =(e: ChangeEvent<HTMLTextAreaElement>) =>{
-    props.changeText(e.currentTarget.value)
-}
+    const changeTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        props.changeText(e.currentTarget.value)
+    }
 
-const addPostHandler =() => {
-    props.addPost()
-}
+    const addPostHandler = () => {
+        props.addPost()
+    }
     return (
         <div className={s.postBlock}>
             <hr/>
             {
                 props.posts.map(p =>
                     <Post
-                    id={p.id}
-                    message={p.message}
-                    likeCount={p.likeCount}
-                    img={p.img}
-                />)
+                        key={p.id}
+                        id={p.id}
+                        message={p.message}
+                        likeCount={p.likeCount}
+                        img={p.img}
+                    />)
             }
             <hr/>
 
@@ -34,7 +34,8 @@ const addPostHandler =() => {
                 onChange={changeTextHandler}>
             </textarea>
             <button
-                onClick={addPostHandler}>Add post</button>
+                onClick={addPostHandler}>Add post
+            </button>
         </div>
 
     )
