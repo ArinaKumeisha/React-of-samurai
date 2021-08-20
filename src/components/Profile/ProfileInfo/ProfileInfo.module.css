@@ -1,8 +1,33 @@
-.descriptionBlock {
-    padding: 10px;
+.photo {
+    padding: 5px;
+
+
+}
+
+.item {
+    width: 97%;
+    height: 420px;
 }
 
 .info {
-  width: 200px;
+    width: 300px;
+    padding: 5px;
 
- }
+}
+
+.description {
+    display: flex;
+    background-color: #f7d5db;
+    flex-direction: column;
+    margin-left: 30px;
+    border-radius: 20px;
+    padding: 10px;
+
+
+}
+
+.descriptionBlock {
+    display: flex;
+
+
+}

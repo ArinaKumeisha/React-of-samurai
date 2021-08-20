@@ -3,6 +3,9 @@ import s from "./user.module.css"
 import userPhoto from "../../assets/image/avatar.png"
 import {UserType} from "../../redux/users-reducer";
 import {NavLink} from "react-router-dom";
+import Pagination from "rc-pagination";
+import localeInfo from '../../locale/en_US';
+
 
 type UsersType = {
     users: Array<UserType>
@@ -17,17 +20,17 @@ type UsersType = {
 }
 
 export let Users = (props: UsersType) => {
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    /*let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     let page = []
 
 
     for (let i = 1; i <= pagesCount; i++) {
         page.push(i)
-    }
+    }*/
     return (
         <div>
             <div>
-                {
+            {/*комент    {
                     page.map((p, index) => {
                             return (
                                 <span key={index}
@@ -38,13 +41,22 @@ export let Users = (props: UsersType) => {
                             )
                         }
                     )
-                }
+                }*/}
+                <Pagination className="ant-pagination"
+                            showTitle={true}
+                            defaultCurrent={props.currentPage}
+                            total={props.totalUsersCount}
+                            current={props.currentPage}
+                            onChange={(e)=>props.onPageHandler(e)}
+                            defaultPageSize={props.pageSize}
+                            locale={localeInfo}
+                />
             </div>
 
             {
                 props.users.map(u => {
                     return <div key={u.id}>
-                    <span>
+
                         <div>
                             <NavLink to={'./profile/' + u.id}>
                             <img src={u.photos.small != null ? u.photos.small : userPhoto}
@@ -64,8 +76,9 @@ export let Users = (props: UsersType) => {
                                     }}>Follow
                             </button>
                         }
+
                         </div>
-                    </span>
+
                         <span>
                         <div>{u.name}</div>
                         <div>{u.status}</div>
@@ -81,5 +94,12 @@ export let Users = (props: UsersType) => {
 
     )
 }
+
+
+
+
+
+
+
 
 

@@ -147,6 +147,7 @@ export const setUserProfile = (userId: string) => {
     return (dispatch: Dispatch<ProfileActionType>) =>{
         usersAPI.getUserProfile(userId)
             .then(response => {
+                debugger
                 dispatch(setUserProfileSuccess(response.data))
             })
     }
