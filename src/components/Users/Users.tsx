@@ -16,7 +16,7 @@ type UsersType = {
     unFollow: (userID: number) => void,
     onPageHandler: (pageNumber: number) => void
     followingInProgress: number[]
-    /*toggleIsFollowingProgress: (followingInProgress: boolean, userID: number) => void*/
+
 }
 
 export let Users = (props: UsersType) => {
@@ -28,9 +28,9 @@ export let Users = (props: UsersType) => {
         page.push(i)
     }*/
     return (
-        <div>
-            <div>
-            {/*комент    {
+        <div className={s.users}>
+            <div className={"pagination"}>
+                {/*комент    {
                     page.map((p, index) => {
                             return (
                                 <span key={index}
@@ -46,50 +46,53 @@ export let Users = (props: UsersType) => {
                             showTitle={true}
                             defaultCurrent={props.currentPage}
                             total={props.totalUsersCount}
-                            current={props.currentPage}
-                            onChange={(e)=>props.onPageHandler(e)}
+                    /*  current={props.currentPage}*/
+                            onChange={(e) => props.onPageHandler(e)}
                             defaultPageSize={props.pageSize}
+                            pageSize={props.pageSize}
                             locale={localeInfo}
+
                 />
             </div>
 
             {
                 props.users.map(u => {
-                    return <div key={u.id}>
+                    return <div key={u.id} className={s.user}>
 
-                        <div>
+                        <div className={s.common}>
                             <NavLink to={'./profile/' + u.id}>
-                            <img src={u.photos.small != null ? u.photos.small : userPhoto}
-                                 className={s.photo}/>
-                                </NavLink>
+                                <img src={u.photos.small != null ? u.photos.small : userPhoto}
+                                     className={s.photo}/>
+
+                            </NavLink>
+                            <div className={s.followAndDescription}>
+                                <div>{u.followed ?
+                                    <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                            onClick={() => {
+                                                props.unFollow(u.id);
+                                            }}>UnFollow
+                                    </button> :
+
+                                    <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                            onClick={() => {
+                                                props.follow(u.id)
+                                            }}>Follow
+                                    </button>
+                                }
+
+                                </div>
+                                <div>{u.name}</div>
+                                <div>{u.status}</div>
+                                <div>{"u.location.country"}</div>
+                                <div>{"u.location.city"}</div>
+                            </div>
                         </div>
-                        <div>{u.followed ?
-                            <button disabled={props.followingInProgress.some(id => id === u.id)}
-                                    onClick={() => {
-                                        props.unFollow(u.id);
-                                    }}>UnFollow
-                            </button> :
-
-                            <button disabled={props.followingInProgress.some(id => id === u.id)}
-                                    onClick={() => {
-                                        props.follow(u.id)
-                                    }}>Follow
-                            </button>
-                        }
-
-                        </div>
-
-                        <span>
-                        <div>{u.name}</div>
-                        <div>{u.status}</div>
-                    </span>
-                        <span>
-                        <div>{"u.location.country"}</div>
-                        <div>{"u.location.city"}</div>
-                    </span>
                     </div>
+
+
                 })
             }
+
         </div>
 
     )

@@ -2,8 +2,9 @@ import React from 'react';
 import {InitialStateType, sendMessageAC, upDateNewMessageTextAC} from "../../redux/dialogs-reducer";
 import {AppStateType} from "../../redux/redux_store";
 import {connect} from "react-redux";
-import {Dispatch} from "redux";
+import {compose, Dispatch} from "redux";
 import Dialogs from "./Dialogs";
+import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 
 
 export type MapStatePropsType = {
@@ -15,10 +16,9 @@ export type MapDispatchPropsType = {
 }
 export type DialogsPropsType = MapStatePropsType & MapDispatchPropsType
 
-
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {   // AppStateType это type всего нашего state!!! и возвращает частичку state из редьюсера
     return {
-        dialogsPage: state.dialogsPage
+        dialogsPage: state.dialogsPage,
     }
 }
 
@@ -32,11 +32,10 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {   //d
         }
     }
 }
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirect,
+)(Dialogs)
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
-export default DialogsContainer
-
-// Dialogs мы оборачиваем компонентой-контейнером DialogsContainer, все свойства и callbacks попадут через пропсы в
-// Dialogs, мы должны их туда прокинуть
 
 

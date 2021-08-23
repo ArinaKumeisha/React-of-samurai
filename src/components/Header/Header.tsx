@@ -12,8 +12,7 @@ type HeaderPropsType = {
         <header className={s.header}>
         <img src ='https://i1.7fon.org/thumb/z134398.jpg' />
             <div className={s.loginBlock}>
-                {props.isAuth ? props.login:<NavLink to={"./login"}>Login</NavLink> }
-
+                { props.isAuth ? props.login : <NavLink to={"./login"}>Login</NavLink> }
             </div>
     </header>
     )}
