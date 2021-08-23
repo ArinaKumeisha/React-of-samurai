@@ -94,7 +94,6 @@ let initialState = {
             img: "https://www.fotoprizer.ru/img_inf/st_221.jpg"
         },
     ] as Array<PostsType>,
-
 }
 
 export const profileReducer = (state: InitialStateType = initialState, action: ProfileActionType): InitialStateType => {

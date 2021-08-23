@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from "react-redux";
 import {
     follow,
-
     getUsersThunkCreator,
     setCurrentPage,
     toggleIsFollowingProgress,
@@ -12,11 +11,13 @@ import {
 import {AppStateType} from "../../redux/redux_store";
 import {Users} from "./Users";
 import Preloader from "../preloader/preloader";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 
 
 class UsersContainer extends React.Component<UsersPropsType> {
     componentDidMount() {
-       this.props.getUsers(this.props.currentPage, this.props.pageSize);
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
     onPageHandler = (pageNumber: number) => {
@@ -54,7 +55,7 @@ export type MapDispatchToPropsType = {
     follow: (userID: number) => void,
     unFollow: (userID: number) => void,
     setCurrentPage: (currentPage: number) => void
-    getUsers: (currentPage:number, pageSize: number)=>void
+    getUsers: (currentPage: number, pageSize: number) => void
 
 
 }
@@ -74,11 +75,16 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     }
 }
 
-export default connect(mapStateToProps, {
-    follow,      // подразумевает follow: follow, где второе follow - это санки
-    unFollow,
-    setCurrentPage,
-    toggleIsFollowingProgress,
-    getUsers:getUsersThunkCreator
-})(UsersContainer)
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, {
+        follow,      // подразумевает follow: follow, где второе follow - это санки
+        unFollow,
+        setCurrentPage,
+        toggleIsFollowingProgress,
+        getUsers: getUsersThunkCreator
+    }),
+    withAuthRedirect,
+)(UsersContainer)
+
+
 

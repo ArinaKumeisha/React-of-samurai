@@ -46,6 +46,7 @@ export const setAuthUserData = () => {
     return (dispatch: Dispatch<AuthActionType>) => {
         authAPI.me()
             .then(response => {
+                debugger
                 if (response.data.resultCode === 0) {
                     dispatch(setAuthUserDataSucces(response.data.data))
                 }
