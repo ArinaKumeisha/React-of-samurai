@@ -69,7 +69,7 @@ export const initialState: InitialStateType = {
     users: [],
     pageSize: 10,   // количество userov на одной странице
     totalUsersCount: 20,  // сколько всего пользователей
-    currentPage: 4,   // текущая страница которую просматриваем
+    currentPage: 1,   // текущая страница которую просматриваем
     isFetching: false,
     followingInProgress: []
 }
