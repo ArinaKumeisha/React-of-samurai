@@ -1,6 +1,7 @@
 import React from 'react';
 import s from "./ProfileInfo.module.css"
 import Preloader from "../../preloader/preloader";
+import {ProfileStatus} from './ProfileStatus';
 
 
 export type ProfileType = {
@@ -19,7 +20,7 @@ const ProfileInfo = (props: ProfileType) => {
                 <div>
                     <img className={s.info}
                          src="https://shutniki.club/wp-content/uploads/2019/12/devushka_v_ochkah_risunok_4_06143556.jpg"/>
-
+                     <ProfileStatus status={"hello!"}/>
                     <div className={s.descriptionBlock}>
                     <div className={s.photo}>
                         <img src={props.profile.photos.large}/></div>
