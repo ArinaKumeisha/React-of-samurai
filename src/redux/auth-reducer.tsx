@@ -22,7 +22,6 @@ type AuthActionType =
 export const authReducer = (state: InitialStateSetUserType = initialState, action: AuthActionType): InitialStateSetUserType => {
     switch (action.type) {
         case ACTION_TYPE.SET_USER_DATA_SUCCESS:
-            debugger
             return {
                 ...state,
                 ...action.payLoad,
@@ -46,7 +45,6 @@ export const setAuthUserData = () => {
     return (dispatch: Dispatch<AuthActionType>) => {
         authAPI.me()
             .then(response => {
-                debugger
                 if (response.data.resultCode === 0) {
                     dispatch(setAuthUserDataSucces(response.data.data))
                 }

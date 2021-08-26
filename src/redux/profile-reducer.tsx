@@ -4,7 +4,8 @@
 
 
 import {Dispatch} from "redux";
-import {usersAPI} from "../api/api";
+import {usersAPI, profileAPI} from "../api/api";
+
 
 export enum ACTION_TYPE {
     ADD_POST = "ADD-POST",
@@ -19,7 +20,8 @@ export enum ACTION_TYPE {
     TOGGLE_IS_FETCHING = "TOGGLE-IS-FETCHING",
     SET_USER_PROFILE_SUCCESS = "SET_USER_PROFILE_SUCCESS",
     SET_USER_DATA_SUCCESS = "SET_USER_DATA_SUCCESS",
-    TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE-IS_FOLLOWING-PROGRESS"
+    TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE-IS_FOLLOWING-PROGRESS",
+    SET_STATUS = "SET_STATUS",
 }
 
 export type PostsType = {
@@ -39,12 +41,16 @@ export type setUserProfileSuccessAT = {
     type: ACTION_TYPE.SET_USER_PROFILE_SUCCESS,
     profile: any
 }
-
+export type SetStatusAT = {
+    type: ACTION_TYPE.SET_STATUS,
+    status: string,
+}
 
 export type ProfileActionType =
     AddPostAT |
     ChangeTextAT |
-    setUserProfileSuccessAT
+    setUserProfileSuccessAT |
+    SetStatusAT
 
 
 // можно типизировать так
@@ -63,23 +69,7 @@ export type InitialStateType = typeof initialState
 let initialState = {
     newPostText: "",
     profile: null,
-    /*profile: {
-        "aboutMe": "",
-        userId: "",
-        lookingForAJob: false,
-        lookingForAJobDescription: "",
-        fullName: "",
-        contacts: {github: "",
-            vk: "",
-            facebook: "",
-            instagram: "",
-            twitter: "",
-            website: "",
-            youtube: "",
-            mainLink: "",
-        },
-        photos: { small: "", large: "" }
-    },*/
+    status: "",
     posts: [
         {
             id: 2,
@@ -120,6 +110,10 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
                 ...state,
                 profile: action.profile
             }
+        case ACTION_TYPE.SET_STATUS:
+            return {
+                ...state, status: action.status
+            }
         default:
             return state
     }
@@ -136,6 +130,13 @@ export const changeTextAC = (newText: string): ChangeTextAT => {
         newText,
     } as const
 }
+
+export const setStatusAC = (status: string): SetStatusAT => {
+    return {
+        type: ACTION_TYPE.SET_STATUS,
+        status,
+    } as const
+}
 export const setUserProfileSuccess = (profile: any) => {
     return {
         type: ACTION_TYPE.SET_USER_PROFILE_SUCCESS,
@@ -143,13 +144,31 @@ export const setUserProfileSuccess = (profile: any) => {
     } as const
 }
 export const setUserProfile = (userId: string) => {
-    return (dispatch: Dispatch<ProfileActionType>) =>{
-        usersAPI.getUserProfile(userId)
+    return (dispatch: Dispatch<ProfileActionType>) => {
+        profileAPI.getUserProfile(userId)
             .then(response => {
-                debugger
                 dispatch(setUserProfileSuccess(response.data))
             })
     }
+}
+export const getUserStatus = (userId: string) => {
+    return (dispatch: Dispatch<ProfileActionType>) => {
+        profileAPI.getStatus(userId)
+            .then(response => {
+                    dispatch(setStatusAC(response.data))
+                }
+            )
     }
+}
+export const updateStatus = (status: string) => {
+    return (dispatch: Dispatch<ProfileActionType>) => {
+        profileAPI.updateStatus(status)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(setStatusAC(status))
+                }
+            })
+    }
+}
 
 
