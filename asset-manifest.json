@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/React-of-samurai/static/css/main.057172b4.chunk.css",
+    "main.js": "/React-of-samurai/static/js/main.543224c2.chunk.js",
+    "main.js.map": "/React-of-samurai/static/js/main.543224c2.chunk.js.map",
+    "runtime-main.js": "/React-of-samurai/static/js/runtime-main.8e0882c5.js",
+    "runtime-main.js.map": "/React-of-samurai/static/js/runtime-main.8e0882c5.js.map",
+    "static/js/2.e0c88883.chunk.js": "/React-of-samurai/static/js/2.e0c88883.chunk.js",
+    "static/js/2.e0c88883.chunk.js.map": "/React-of-samurai/static/js/2.e0c88883.chunk.js.map",
+    "index.html": "/React-of-samurai/index.html",
+    "static/css/main.057172b4.chunk.css.map": "/React-of-samurai/static/css/main.057172b4.chunk.css.map",
+    "static/js/2.e0c88883.chunk.js.LICENSE.txt": "/React-of-samurai/static/js/2.e0c88883.chunk.js.LICENSE.txt",
+    "static/media/avatar.7bdf7b93.png": "/React-of-samurai/static/media/avatar.7bdf7b93.png",
+    "static/media/preloader.7f686c03.gif": "/React-of-samurai/static/media/preloader.7f686c03.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8e0882c5.js",
+    "static/js/2.e0c88883.chunk.js",
+    "static/css/main.057172b4.chunk.css",
+    "static/js/main.543224c2.chunk.js"
+  ]
+}
