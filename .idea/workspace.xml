@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c72d509b-5115-47ed-9a3f-5ccfec7bdf29" name="Default Changelist" comment="73 - http put, local state">
+    <list default="true" id="c72d509b-5115-47ed-9a3f-5ccfec7bdf29" name="Default Changelist" comment="74 - React JS - componentDidUpdate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +75,8 @@
       <workItem from="1629894055935" duration="5643000" />
       <workItem from="1629987120812" duration="11654000" />
       <workItem from="1630000128058" duration="1259000" />
-      <workItem from="1630073201384" duration="2833000" />
+      <workItem from="1630073201384" duration="2878000" />
+      <workItem from="1630253516708" duration="315000" />
     </task>
     <task id="LOCAL-00001" summary="users css">
       <created>1629806572299</created>
@@ -118,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629997311519</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="74 - React JS - componentDidUpdate">
+      <created>1630076968392</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1630076968392</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +151,7 @@
     <MESSAGE value="add idea to ignore" />
     <MESSAGE value="71 - lesson setState, local state" />
     <MESSAGE value="73 - http put, local state" />
-    <option name="LAST_COMMIT_MESSAGE" value="73 - http put, local state" />
+    <MESSAGE value="74 - React JS - componentDidUpdate" />
+    <option name="LAST_COMMIT_MESSAGE" value="74 - React JS - componentDidUpdate" />
   </component>
 </project>
