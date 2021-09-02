@@ -4,8 +4,7 @@ import Post from "./Post/Post";
 import {MyPostPropsType} from "./MyPostsContainer";
 import {Field, reduxForm} from 'redux-form';
 
-
-function MyPosts(props: MyPostPropsType) {
+const MyPosts = (props: MyPostPropsType)=> {
     const addPost = (value: any) => {
         props.addPost(value.newPost)
     }
@@ -28,7 +27,6 @@ function MyPosts(props: MyPostPropsType) {
         </div>
     )
 }
-
 export const PostForm = (props: any) => {
     return (
         <form
@@ -42,6 +40,4 @@ export const PostForm = (props: any) => {
     )
 }
  const PostReduxForm = reduxForm({form: 'contact'})(PostForm)
-
-
 export default MyPosts;

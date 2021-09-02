@@ -8,7 +8,6 @@ import {Dispatch} from "redux";
 
 type MapStatePropsType = {
     posts: Array<PostsType>
-    newPostText: string
 }
 
 type MapDispatchToPropsType = {
@@ -20,7 +19,6 @@ export type MyPostPropsType = MapStatePropsType & MapDispatchToPropsType
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         posts: state.profilePage.posts,
-        newPostText: state.profilePage.newPostText
     }
 }
 

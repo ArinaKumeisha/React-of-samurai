@@ -51,7 +51,6 @@ export type ProfileActionType =
 export type InitialStateType = typeof initialState
 
 let initialState = {
-    newPostText: "",
     profile: null,
     status: "",
     posts: [
@@ -74,13 +73,13 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
         case ACTION_TYPE.ADD_POST:
             const newPost: PostsType = {
                 id: new Date().getTime(),
-                message: state.newPostText,
+                message: action.newMessagePost,
                 likeCount: 0,
                 img: "https://www.fotoprizer.ru/img_inf/st_221.jpg",
             }
             return {
                 ...state,
-                posts: [newPost, ...action.newMessagePost],
+                posts: [newPost, ...state.posts],
             }
         case ACTION_TYPE.SET_USER_PROFILE_SUCCESS:
             return {
