@@ -2,15 +2,12 @@ import React, {ChangeEvent} from 'react';
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
 import {MyPostPropsType} from "./MyPostsContainer";
+import {Field, reduxForm} from 'redux-form';
 
 
 function MyPosts(props: MyPostPropsType) {
-    const changeTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.changeText(e.currentTarget.value)
-    }
-
-    const addPostHandler = () => {
-        props.addPost()
+    const addPost = (value: any) => {
+        props.addPost(value.newPost)
     }
     return (
         <div className={s.postBlock}>
@@ -26,20 +23,25 @@ function MyPosts(props: MyPostPropsType) {
                     />)
             }
             <hr/>
-
             <h3>My post</h3>
-
-            <textarea
-                value={props.newPostText}
-                onChange={changeTextHandler}>
-            </textarea>
-            <button
-                onClick={addPostHandler}>Add post
-            </button>
+            <PostReduxForm onSubmit={addPost}/>
         </div>
-
     )
-
 }
+
+export const PostForm = (props: any) => {
+    return (
+        <form
+            onSubmit={props.handleSubmit}>
+            <Field
+                name="newPost"
+                component="input"
+                type={'text'}/>
+            <button>Add post</button>
+        </form>
+    )
+}
+ const PostReduxForm = reduxForm({form: 'contact'})(PostForm)
+
 
 export default MyPosts;

@@ -31,11 +31,8 @@ export type PostsType = {
     img: string
 }
 export type AddPostAT = {
-    type: ACTION_TYPE.ADD_POST
-}
-export type ChangeTextAT = {
-    type: ACTION_TYPE.CHANGE_TEXT,
-    newText: string
+    type: ACTION_TYPE.ADD_POST,
+    newMessagePost: any
 }
 export type setUserProfileSuccessAT = {
     type: ACTION_TYPE.SET_USER_PROFILE_SUCCESS,
@@ -48,21 +45,8 @@ export type SetStatusAT = {
 
 export type ProfileActionType =
     AddPostAT |
-    ChangeTextAT |
     setUserProfileSuccessAT |
     SetStatusAT
-
-
-// можно типизировать так
-// export type ActionsType =
-//     ReturnType<typeof changeTextareaAC> |
-//     ReturnType<typeof upDateNewMessageTextAC> |
-//     ReturnType<typeof sendMessageAC> |
-//     ReturnType<typeof followAC> |
-//     ReturnType<typeof unFollowAC> |
-//     ReturnType<typeof setUsersAC> |
-//     ReturnType<typeof setCurrentPageAC> |
-//     ReturnType<typeof setTotalUserCountAC>
 
 export type InitialStateType = typeof initialState
 
@@ -85,7 +69,6 @@ let initialState = {
         },
     ] as Array<PostsType>,
 }
-
 export const profileReducer = (state: InitialStateType = initialState, action: ProfileActionType): InitialStateType => {
     switch (action.type) {
         case ACTION_TYPE.ADD_POST:
@@ -97,13 +80,7 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
             }
             return {
                 ...state,
-                posts: [newPost, ...state.posts],
-                newPostText: ""
-            }
-        case ACTION_TYPE.CHANGE_TEXT:
-            return {
-                ...state,
-                newPostText: action.newText
+                posts: [newPost, ...action.newMessagePost],
             }
         case ACTION_TYPE.SET_USER_PROFILE_SUCCESS:
             return {
@@ -118,16 +95,10 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
             return state
     }
 }
-export const addPostAC = (): AddPostAT => {
+export const addPostAC = (newMessagePost: string): AddPostAT => {
     return {
         type: ACTION_TYPE.ADD_POST,
-    } as const
-}
-
-export const changeTextAC = (newText: string): ChangeTextAT => {
-    return {
-        type: ACTION_TYPE.CHANGE_TEXT,
-        newText,
+        newMessagePost,
     } as const
 }
 

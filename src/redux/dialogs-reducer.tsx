@@ -15,17 +15,12 @@ export type DialogsType = {
 export type InitialStateType = {
     dialogs: Array<DialogsType>
     messages: Array<MessagesType>
-    newMessageText: string
 }
 type SendMessageAT = {
-    type: ACTION_TYPE.SEND_MESSAGE
+    type: ACTION_TYPE.SEND_MESSAGE,
+    newMessageBody: string
 }
-type UpdateMessageTextAT = {
-    type: ACTION_TYPE.UPDATE_NEW_MESSAGE_TEXT
-    newMessage: string
-
-}
-type DialogActionType = SendMessageAT | UpdateMessageTextAT
+type DialogActionType = SendMessageAT
 /*export type InitialStateType = typeof initialState*/
 
 let initialState: InitialStateType = {
@@ -57,42 +52,30 @@ let initialState: InitialStateType = {
         {id: 2, message: "Hello"},
         {id: 3, message: "Yo"},
     ], // as Array<MessagesType>,
-    newMessageText: " "
 }
 
 
 export const dialogsReducer = (state: InitialStateType = initialState, action: DialogActionType): InitialStateType => {
     switch (action.type) {
-        case ACTION_TYPE.UPDATE_NEW_MESSAGE_TEXT:
-            return {
-                ...state, newMessageText: action.newMessage
-            }
         case ACTION_TYPE.SEND_MESSAGE:
             const nextMessage: MessagesType = {
                 id: new Date().getTime(),
-                message: state.newMessageText
+                message: action.newMessageBody
             }
 
             return {
                 ...state, messages: [nextMessage, ...state.messages],
-                newMessageText: ""
             }
 
         default:
             return state
     }
 }
-
-export const upDateNewMessageTextAC = (newMessage: string): UpdateMessageTextAT => {
-    return {
-        type: ACTION_TYPE.UPDATE_NEW_MESSAGE_TEXT,
-        newMessage,
-    } as const
-}
-export const sendMessageAC = (): SendMessageAT => {
+export const sendMessageAC = (newMessageBody: string): SendMessageAT => {
     return (
         {
-            type: ACTION_TYPE.SEND_MESSAGE
+            type: ACTION_TYPE.SEND_MESSAGE,
+            newMessageBody,
         }
     ) as const
 }

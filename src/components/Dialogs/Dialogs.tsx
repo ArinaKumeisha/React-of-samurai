@@ -2,19 +2,15 @@ import React, {ChangeEvent} from 'react';
 import s from "./Dialogs.module.css"
 import {DialogsPropsType} from "./DialogsContainer";
 import {Redirect} from 'react-router-dom'
+import {Field, reduxForm} from 'redux-form';
 
 
 export function Dialogs(props: DialogsPropsType) {
 
-    const changeNewMessageHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.changeNewMessage(e.currentTarget.value)
+    let addNewMessageBody = (data: any) => {
+        props.sendNewMessage(data.newMessageBody)
     }
-
-    const sendMessageHandler = () => {
-        props.sendNewMessage()
-    }
-
-    return(
+    return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 {
@@ -25,7 +21,6 @@ export function Dialogs(props: DialogsPropsType) {
                                 <img src={d.img}/>
                             </div>)
                     })}
-
             </div>
             <div className={s.messages}>
                 {
@@ -36,17 +31,27 @@ export function Dialogs(props: DialogsPropsType) {
                                 {m.message}
                             </div>)
                     })}
-
-                <textarea
-                    value={props.dialogsPage.newMessageText}
-                    placeholder="Enter your message"
-                    onChange={changeNewMessageHandler}/>
-                <button onClick={sendMessageHandler}>send</button>
+                <AddMessageReduxForm onSubmit={addNewMessageBody}/>
             </div>
         </div>
-
     )
 }
+
+export const AddMessageForm = (props: any) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <Field placeholder={'Enter uour message'}
+                   name='newMessageBody'
+                   component={'textarea'}
+                   type={'text'}/>
+            <button>Send</button>
+        </form>
+    )
+}
+
+export const AddMessageReduxForm = reduxForm({
+    form: 'dialogs'
+})(AddMessageForm)
 
 export default Dialogs;
 
