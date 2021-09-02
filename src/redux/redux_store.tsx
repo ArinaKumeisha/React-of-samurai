@@ -4,7 +4,7 @@ import {dialogsReducer} from "./dialogs-reducer";
 import {usersReducer} from "./users-reducer";
 import {authReducer} from "./auth-reducer";
 import thunkMiddleWare from "redux-thunk"
-
+import { reducer as formReducer } from 'redux-form'
 
 /*export type ActionsType =
     ReturnType<typeof addPostAC> |
@@ -12,18 +12,16 @@ import thunkMiddleWare from "redux-thunk"
     ReturnType<typeof upDateNewMessageTextAC> |
     ReturnType<typeof sendMessageAC>*/
 
-
-
 let rootReducer = combineReducers({              //rootReducer возвращает state
     profilePage: profileReducer,  //это наш целый стэйт
     dialogsPage: dialogsReducer,  // ключ: значение
     usersPage: usersReducer,
     auth: authReducer,
+    form: formReducer
 })
 
 export type AppStateType=ReturnType<typeof rootReducer>   //  ReturnType -> дай мне  возвращаемый тип rootReducera
 export let store = createStore(rootReducer, applyMiddleware(thunkMiddleWare))
-
 //@ts-ignore
-window.store = store.getState.bind(store)
+window.store = store
 
