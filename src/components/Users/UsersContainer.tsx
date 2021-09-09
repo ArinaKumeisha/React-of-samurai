@@ -11,10 +11,8 @@ import {
 import {AppStateType} from "../../redux/redux_store";
 import Preloader from "../preloader/preloader";
 import {compose} from "redux";
-import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
+import {withAuthRedirect} from "../../hoc/WithAuthRedirects";
 import {Users} from "./Users";
-
-
 
 class UsersContainer extends React.Component<UsersPropsType> {
     componentDidMount() {

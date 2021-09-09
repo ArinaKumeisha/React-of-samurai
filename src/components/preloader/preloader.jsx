@@ -1,12 +1,12 @@
 import React from 'react';
-import preloader from "../../assets/image/preloader.gif";
+import prelo from '../../assets/image/prelo.webp'
 
 const Preloader = () => {
     return (
         <div>
-            <img src={preloader} style={{width: "300px"}}/>
+            <img src={prelo} style={{width: "300px"}}/>
         </div>
-    );
-};
+    )
+}
 
 export default Preloader;

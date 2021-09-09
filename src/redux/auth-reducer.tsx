@@ -15,18 +15,6 @@ export type InitialStateSetUserType = {
     login: string | null
     isAuth: boolean
 }
-// export type LoginDataType ={
-//     email: string,
-//     password: string,
-//     rememberMe: boolean,
-//     captcha: boolean
-// }
-// export const loginData ={
-//     email: '',
-//     password: '',
-//     rememberMe: true,
-//     captcha: true
-// }
 
 type AuthActionType =
     ReturnType<typeof setAuthUserDataSucces>

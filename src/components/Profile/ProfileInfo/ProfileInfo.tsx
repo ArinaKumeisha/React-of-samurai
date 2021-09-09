@@ -51,24 +51,4 @@ const ProfileInfo = (props: ProfileType) => {
     }
 }
 export default ProfileInfo;
-/*
-data:
-    aboutMe: "я круто чувак 1001%"
-contacts:
-    facebook: "facebook.com"
-github: "github.com"
-instagram: "instagra.com/sds"
-mainLink: null
-twitter: "https://twitter.com/@sdf"
-vk: "vk.com/dimych"
-website: null
-youtube: null
-    [[Prototype]]: Object
-fullName: "samurai dimych"
-lookingForAJob: true
-lookingForAJobDescription: "не ищу, а дурачусь"
-photos:
-    large: "https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0"
-small: "https://social-network.samuraijs.com/activecontent/images/users/2/user-small.jpg?v=0"
-*/
 

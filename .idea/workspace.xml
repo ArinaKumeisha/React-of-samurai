@@ -4,15 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c72d509b-5115-47ed-9a3f-5ccfec7bdf29" name="Default Changelist" comment="76 - lesson redux-form (про базовые вещи)">
-      <change afterPath="$PROJECT_DIR$/src/components/New/new-reducer.tsx" afterDir="false" />
+    <list default="true" id="c72d509b-5115-47ed-9a3f-5ccfec7bdf29" name="Default Changelist" comment="Практика использования Redux Form">
+      <change afterPath="$PROJECT_DIR$/src/assets/FormsControls.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/FormsControls.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hoc/WithAuthRedirects.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/validators/validators.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/New/New.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/New/New.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/DialogsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/DialogsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Profile/myPosts/MyPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/myPosts/MyPosts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/myPosts/MyPostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/myPosts/MyPostsContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/profile-reducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/profile-reducer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/redux_store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/redux_store.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Users/UsersContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/UsersContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/preloader/preloader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/preloader/preloader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/WithAuthRedirect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/auth-reducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/auth-reducer.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +49,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -51,6 +58,11 @@
     <property name="settings.editor.selected.configurable" value="http.proxy" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2021.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\react-samuraj-clone\src\assets" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -86,7 +98,10 @@
       <workItem from="1630073201384" duration="2878000" />
       <workItem from="1630253516708" duration="518000" />
       <workItem from="1630254140592" duration="12000" />
-      <workItem from="1630582987356" duration="24572000" />
+      <workItem from="1630582987356" duration="25212000" />
+      <workItem from="1630672879486" duration="31000" />
+      <workItem from="1630855636869" duration="72000" />
+      <workItem from="1631194116078" duration="15347000" />
     </task>
     <task id="LOCAL-00001" summary="users css">
       <created>1629806572299</created>
@@ -158,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630599183358</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Практика использования Redux Form">
+      <created>1630610682537</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1630610682537</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,6 +208,7 @@
     <MESSAGE value="Add github pages" />
     <MESSAGE value="75 - lesson redux-form (введение)" />
     <MESSAGE value="76 - lesson redux-form (про базовые вещи)" />
-    <option name="LAST_COMMIT_MESSAGE" value="76 - lesson redux-form (про базовые вещи)" />
+    <MESSAGE value="Практика использования Redux Form" />
+    <option name="LAST_COMMIT_MESSAGE" value="Практика использования Redux Form" />
   </component>
 </project>
