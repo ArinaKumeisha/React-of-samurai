@@ -5,20 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c72d509b-5115-47ed-9a3f-5ccfec7bdf29" name="Default Changelist" comment="Практика использования Redux Form">
-      <change afterPath="$PROJECT_DIR$/src/assets/FormsControls.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/FormsControls.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hoc/WithAuthRedirects.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/validators/validators.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/DialogsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/DialogsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/myPosts/MyPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/myPosts/MyPosts.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Users/UsersContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/UsersContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/preloader/preloader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/preloader/preloader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hoc/WithAuthRedirect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/WithAuthRedirects.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/WithAuthRedirects.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/auth-reducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/auth-reducer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/validators/validators.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/validators/validators.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +97,9 @@
       <workItem from="1630672879486" duration="31000" />
       <workItem from="1630855636869" duration="72000" />
       <workItem from="1631194116078" duration="15347000" />
+      <workItem from="1631377289743" duration="12312000" />
+      <workItem from="1631437506957" duration="4065000" />
+      <workItem from="1631551733034" duration="2279000" />
     </task>
     <task id="LOCAL-00001" summary="users css">
       <created>1629806572299</created>

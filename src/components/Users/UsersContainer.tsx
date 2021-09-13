@@ -55,10 +55,7 @@ export type MapDispatchToPropsType = {
     unFollow: (userID: number) => void,
     setCurrentPage: (currentPage: number) => void
     getUsers: (currentPage: number, pageSize: number) => void
-
-
 }
-
 
 export type UsersPropsType = MapDispatchToPropsType & MapStateToPropsType
 
