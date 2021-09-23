@@ -7,28 +7,27 @@ import {Input} from "../../assets/FormsControls";
 import {AuthActionType, login} from '../../redux/auth-reducer';
 import {AppStateType} from '../../redux/redux_store';
 import {maxLengthCreator, required} from "../../utils/validators/validators";
+import s from '../../assets/FormsControls.module.css'
 
 type FormDataType = {
     password: string
     rememberMe: boolean
     email: string
 }
-
 const Login = (props: LoginPropsType) => {
     const isAuth = useSelector<AppStateType, boolean>(state => state.auth.isAuth)
-    const loginString = useSelector<AppStateType, string| null>(state => state.auth.login)
     const onSubmit = (data: FormDataType,) => {
         props.login(data.password, data.email, data.rememberMe);
     }
     if (isAuth) {
         return <Redirect to={'/profile'}/>;
     }
-        return (
-            <div>
-                <h1>{'Login'}</h1>
-                <LoginReduxForm onSubmit={onSubmit}/>
-            </div>
-        )
+    return (
+        <div>
+            <h1>{'Login'}</h1>
+            <LoginReduxForm onSubmit={onSubmit}/>
+        </div>
+    )
 };
 const maxLength12 = maxLengthCreator(30)
 export const LoginForm = (props: InjectedFormProps<FormDataType>) => {
@@ -38,7 +37,7 @@ export const LoginForm = (props: InjectedFormProps<FormDataType>) => {
             <Field
                 component={Input}
                 name={'password'}
-                type={'text'}
+                type='text'
                 validate={[required, maxLength12,]}/>
             <h3>Password</h3>
             <Field
@@ -53,16 +52,23 @@ export const LoginForm = (props: InjectedFormProps<FormDataType>) => {
                 name={'remember me'}
                 type={'checkbox'}
             />
+            {props.error && <div className={s.comonError}>
+                {props.error}
+            </div>
+            }
 
             <button>Login</button>
+
         </form>
+
     );
 }
-const LoginReduxForm = reduxForm<FormDataType>({
+const LoginReduxForm = reduxForm
+<FormDataType>({
     // a unique name for the form
     form: 'login'
 })(LoginForm)
 
-const connector = connect(null, {login})
-type LoginPropsType = ConnectedProps<typeof connector>;
-export default connector(Login)
+    const connector = connect(null, {login})
+    type LoginPropsType = ConnectedProps <typeof connector>;
+        export default connector(Login);

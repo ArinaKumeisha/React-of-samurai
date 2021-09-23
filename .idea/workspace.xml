@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c72d509b-5115-47ed-9a3f-5ccfec7bdf29" name="Default Changelist" comment="Практика использования Redux Form">
+    <list default="true" id="c72d509b-5115-47ed-9a3f-5ccfec7bdf29" name="Default Changelist" comment="78 React JS - login and log out api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/FormsControls.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/FormsControls.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Users/UsersContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/UsersContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hoc/WithAuthRedirects.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/WithAuthRedirects.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/auth-reducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/auth-reducer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/validators/validators.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/validators/validators.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +96,9 @@
       <workItem from="1631194116078" duration="15347000" />
       <workItem from="1631377289743" duration="12312000" />
       <workItem from="1631437506957" duration="4065000" />
-      <workItem from="1631551733034" duration="2279000" />
+      <workItem from="1631551733034" duration="2622000" />
+      <workItem from="1631554566026" duration="841000" />
+      <workItem from="1632388942593" duration="9795000" />
     </task>
     <task id="LOCAL-00001" summary="users css">
       <created>1629806572299</created>
@@ -178,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630610682537</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="78 React JS - login and log out api">
+      <created>1631554284889</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1631554284889</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,6 +213,7 @@
     <MESSAGE value="75 - lesson redux-form (введение)" />
     <MESSAGE value="76 - lesson redux-form (про базовые вещи)" />
     <MESSAGE value="Практика использования Redux Form" />
-    <option name="LAST_COMMIT_MESSAGE" value="Практика использования Redux Form" />
+    <MESSAGE value="78 React JS - login and log out api" />
+    <option name="LAST_COMMIT_MESSAGE" value="78 React JS - login and log out api" />
   </component>
 </project>

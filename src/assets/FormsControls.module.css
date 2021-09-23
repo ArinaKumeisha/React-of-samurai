@@ -13,3 +13,7 @@
     color: #9c1717;
     font-weight: bold;
 }
+
+.comonError {
+    border: solid 4px red;
+}
