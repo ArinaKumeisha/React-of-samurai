@@ -11,11 +11,13 @@ export function Dialogs(props: DialogsPropsType) {
     let addNewMessageBody = (data: FormMessageType) => {
         props.sendNewMessage(data.newMessageBody)
     }
+    let dialogs = props.dialogsPage.dialogs
+    let messages = props.dialogsPage.messages
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 {
-                    props.dialogsPage.dialogs.map(d => {
+                    dialogs.map(d => {
                         return (
                             <div className={s.dialog + " " + s.active}>
                                 {d.name}
@@ -25,7 +27,7 @@ export function Dialogs(props: DialogsPropsType) {
             </div>
             <div className={s.messages}>
                 {
-                    props.dialogsPage.messages.map(m => {
+                    messages.map(m => {
                         return (
                             <div key={m.id}
                                  className={s.dialog}>
@@ -37,6 +39,7 @@ export function Dialogs(props: DialogsPropsType) {
         </div>
     )
 }
+
 type FormMessageType = {
     newMessageBody: string
 }

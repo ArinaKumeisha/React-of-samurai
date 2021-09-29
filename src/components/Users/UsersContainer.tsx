@@ -6,13 +6,13 @@ import {
     setCurrentPage,
     toggleIsFollowingProgress,
     unFollow,
-    UserType
 } from "../../redux/users-reducer";
 import {AppStateType} from "../../redux/redux_store";
 import Preloader from "../preloader/preloader";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/WithAuthRedirects";
 import {Users} from "./Users";
+import { UserType } from '../../types/types';
 
 class UsersContainer extends React.Component<UsersPropsType> {
     componentDidMount() {
@@ -23,7 +23,6 @@ class UsersContainer extends React.Component<UsersPropsType> {
         this.props.getUsers(pageNumber, this.props.pageSize)
 
     }
-
     render() {
         return (
             <>    {this.props.isFetching ? <Preloader/> : null}
@@ -41,6 +40,7 @@ class UsersContainer extends React.Component<UsersPropsType> {
         )
     }
 }
+export type UsersPropsType = MapDispatchToPropsType & MapStateToPropsType
 
 export type MapStateToPropsType = {
     users: Array<UserType>
@@ -57,7 +57,6 @@ export type MapDispatchToPropsType = {
     getUsers: (currentPage: number, pageSize: number) => void
 }
 
-export type UsersPropsType = MapDispatchToPropsType & MapStateToPropsType
 
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
@@ -67,7 +66,6 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         followingInProgress: state.usersPage.followingInProgress,
-
     }
 }
 

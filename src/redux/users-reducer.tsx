@@ -1,53 +1,8 @@
 import {ACTION_TYPE} from "./profile-reducer";
 import {Dispatch} from "redux";
 import {usersAPI} from "../api/api";
+import {PhotosType, UserType} from "../types/types";
 
-
-export type UserType = {
-    id: number
-    name: string
-    status: string
-    photos: {
-        small: string,
-        large: string
-    },
-    followed: boolean
-
-}
-
-type FollowAT = {
-    type: ACTION_TYPE.FOLLOW_SUCCES
-    userID: number
-}
-
-type UnFollowAT = {
-    type: ACTION_TYPE.UN_FOLLOW_SUCCESS
-    userID: number
-}
-type SetUsersAT = {
-    type: ACTION_TYPE.SET_USERS
-    users: UserType[]
-}
-
-type SetCurrentPageAT = {
-    type: ACTION_TYPE.SET_CURRENT_PAGE
-    currentPage: number
-}
-
-type SetTotalUserCountAT = {
-    type: ACTION_TYPE.SET_TOTAL_USER_COUNT
-    count: number
-}
-
-type ToggleIsFetchingAT = {
-    type: ACTION_TYPE.TOGGLE_IS_FETCHING
-    isFetching: boolean
-}
-type ToggleIsFollowingProgressAT = {
-    type: ACTION_TYPE.TOGGLE_IS_FOLLOWING_PROGRESS
-    userId: number
-    isFetching: boolean
-}
 export type UsersActionType = FollowAT |
     UnFollowAT |
     SetUsersAT |
@@ -56,25 +11,17 @@ export type UsersActionType = FollowAT |
     ToggleIsFetchingAT |
     ToggleIsFollowingProgressAT
 
-export type InitialStateType = {
-    users: Array<UserType>
-    pageSize: number
-    totalUsersCount: number
-    currentPage: number
-    isFetching: boolean
-    followingInProgress: number[]
-}
-
-export const initialState: InitialStateType = {
-    users: [],
+type InitialStateType = typeof initialState
+export const initialState = {
+    users: [] as UserType[],
     pageSize: 10,   // количество userov на одной странице
     totalUsersCount: 20,  // сколько всего пользователей
     currentPage: 1,   // текущая страница которую просматриваем
     isFetching: false,
-    followingInProgress: []
+    followingInProgress: [] as number[] //id пользователей
 }
 
-export const usersReducer = (state: InitialStateType = initialState, action: UsersActionType): InitialStateType => {
+export const usersReducer = (state = initialState, action: UsersActionType): InitialStateType => {
 
     switch (action.type) {
         case ACTION_TYPE.FOLLOW_SUCCES:
@@ -120,14 +67,43 @@ export const usersReducer = (state: InitialStateType = initialState, action: Use
     }
 }
 
+type FollowAT = {
+    type: ACTION_TYPE.FOLLOW_SUCCES
+    userID: number
+}
+type UnFollowAT = {
+    type: ACTION_TYPE.UN_FOLLOW_SUCCESS
+    userID: number
+}
+type SetUsersAT = {
+    type: ACTION_TYPE.SET_USERS
+    users: UserType[]
+}
+type SetCurrentPageAT = {
+    type: ACTION_TYPE.SET_CURRENT_PAGE
+    currentPage: number
+}
 
+type SetTotalUserCountAT = {
+    type: ACTION_TYPE.SET_TOTAL_USER_COUNT
+    count: number
+}
+
+type ToggleIsFetchingAT = {
+    type: ACTION_TYPE.TOGGLE_IS_FETCHING
+    isFetching: boolean
+}
+type ToggleIsFollowingProgressAT = {
+    type: ACTION_TYPE.TOGGLE_IS_FOLLOWING_PROGRESS
+    userId: number
+    isFetching: boolean
+}
 export const followSucces = (userID: number): FollowAT => {    // функции AC
     return {
         type: ACTION_TYPE.FOLLOW_SUCCES,
         userID: userID,
     } as const
 }
-
 export const unFollowSuccess = (userID: number): UnFollowAT => {  // функции AC
     return {
         type: ACTION_TYPE.UN_FOLLOW_SUCCESS,
@@ -138,11 +114,9 @@ export const unFollowSuccess = (userID: number): UnFollowAT => {  // функц�
 export const setUsers = (users: Array<UserType>): SetUsersAT => {  // функции AC
     return {
         type: ACTION_TYPE.SET_USERS,
-        users: users
-
+        users: users,
     } as const
 }
-
 export const setCurrentPage = (currentPage: number): SetCurrentPageAT => {  // функции AC
     return {
         type: ACTION_TYPE.SET_CURRENT_PAGE,

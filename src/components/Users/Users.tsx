@@ -1,29 +1,14 @@
 import React from "react";
 import s from "./user.module.css"
 import avatar from "../../assets/image/avatar.png"
-
-import {UserType} from "../../redux/users-reducer";
 import {NavLink} from "react-router-dom";
 import Pagination from "rc-pagination";
 import localeInfo from '../../locale/en_US';
-
-
-type UsersType = {
-    users: Array<UserType>
-    pageSize: number
-    totalUsersCount: number
-    currentPage: number
-    follow: (userID: number) => void,
-    unFollow: (userID: number) => void,
-    onPageHandler: (pageNumber: number) => void
-    followingInProgress: number[]
-
-}
+import {UsersType, UserType } from "../../types/types";
 
 export let Users = (props: UsersType) => {
     /*let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     let page = []
-
     for (let i = 1; i <= pagesCount; i++) {
         page.push(i)
     }*/
@@ -38,9 +23,7 @@ export let Users = (props: UsersType) => {
                                       onClick={() => {
                                           props.onPageHandler(p)
                                       }}>{p}</span>
-                            )
-                        }
-                    )
+                            ) } )
                 }*/}
                 <Pagination className="ant-pagination"
                             showTitle={true}
@@ -49,11 +32,8 @@ export let Users = (props: UsersType) => {
                             onChange={(e) => props.onPageHandler(e)}
                             defaultPageSize={props.pageSize}
                             pageSize={props.pageSize}
-                            locale={localeInfo}
-
-                />
+                            locale={localeInfo}/>
             </div>
-
             {
                 props.users.map(u => {
                     return <div key={u.id} className={s.user}>
@@ -62,9 +42,7 @@ export let Users = (props: UsersType) => {
                             <NavLink className={s.photo} to={'./profile/' + u.id}>
                                 <img src={u.photos.small != null ? u.photos.small : avatar}
                                 />
-
                             </NavLink>
-
                             <div className={s.followAndDescription}>
                                 <div className={s.left}>
                                     {u.followed ?

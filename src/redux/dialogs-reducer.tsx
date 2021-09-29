@@ -1,29 +1,10 @@
+import { DialogsType, MessagesType } from "../types/types";
 import {ACTION_TYPE} from "./profile-reducer";
 
 
-export type MessagesType = {
-    id: number
-    message: string
-}
-
-export type DialogsType = {
-    id: number
-    name: string
-    img: string
-}
-
-export type InitialStateType = {
-    dialogs: Array<DialogsType>
-    messages: Array<MessagesType>
-}
-type SendMessageAT = {
-    type: ACTION_TYPE.SEND_MESSAGE,
-    newMessageBody: string
-}
+export type InitialStateType = typeof initialState
 type DialogActionType = SendMessageAT
-/*export type InitialStateType = typeof initialState*/
-
-let initialState: InitialStateType = {
+let initialState = {
     dialogs: [
         {
             id: 1,
@@ -46,16 +27,16 @@ let initialState: InitialStateType = {
             name: "Anna",
             img: "https://i.pinimg.com/originals/b2/95/45/b29545916fbf406f7cec10ff1845a191.jpg"
         },
-    ] /*as Array<DialogsType>*/,
+    ] as Array<DialogsType>,
     messages: [
         {id: 1, message: "How are you?"},
         {id: 2, message: "Hello"},
         {id: 3, message: "Yo"},
-    ], // as Array<MessagesType>,
+    ] as Array<MessagesType>,
 }
 
 
-export const dialogsReducer = (state: InitialStateType = initialState, action: DialogActionType): InitialStateType => {
+export const dialogsReducer = (state = initialState, action: DialogActionType): InitialStateType => {
     switch (action.type) {
         case ACTION_TYPE.SEND_MESSAGE:
             const nextMessage: MessagesType = {
@@ -66,10 +47,13 @@ export const dialogsReducer = (state: InitialStateType = initialState, action: D
             return {
                 ...state, messages: [nextMessage, ...state.messages],
             }
-
         default:
             return state
     }
+}
+type SendMessageAT = {
+    type: ACTION_TYPE.SEND_MESSAGE,
+    newMessageBody: string
 }
 export const sendMessageAC = (newMessageBody: string): SendMessageAT => {
     return (

@@ -9,8 +9,7 @@ import { ProfileType } from '../Profile';
 const ProfileInfo = (props: ProfileType) => {
     if (!props.profile) {
         return <Preloader/>
-    }
-    else {
+    } else {
         return (
             < div>
                 <div>
@@ -20,30 +19,30 @@ const ProfileInfo = (props: ProfileType) => {
                     <img className={s.info}
                          src="https://shutniki.club/wp-content/uploads/2019/12/devushka_v_ochkah_risunok_4_06143556.jpg"/>
 
-                     <ProfileStatus
-                         status={props.status}
-                         updateStatus={props.updateStatus}
-                     />
+                    <ProfileStatus
+                        status={props.status}
+                        updateStatus={props.updateStatus}
+                    />
                     <div className={s.descriptionBlock}>
-                    <div className={s.photo}>
-                        <img src={props.profile.photos.large}/></div>
-                        <div className={s.description}>
-                            <h3>Обо мне</h3>
-                            <div>{props.profile.aboutMe}</div>
-                            <h3>Мои социальные сети</h3>
-                            <a href="https://google.com/">{props.profile.contacts.facebook}</a>
-                            <a href="https://google.com/">{props.profile.contacts.website}</a>
-                            <a href="https://google.com/">{props.profile.contacts.vk}</a>
-                            <a href="https://google.com/">{props.profile.contacts.twitter}</a>
-                            <a href="https://google.com/">{props.profile.contacts.instagram}</a>
-                            <a href="https://google.com/">{props.profile.contacts.youtube}</a>
-                            <a href="https://google.com/">{props.profile.contacts.github}</a>
-                            <a href="https://google.com/">{props.profile.contacts.mainLink}</a>
-                            <a href="https://google.com/">{props.profile.fullName}</a>
-                            <a href="https://google.com/">{props.profile.lookingForAJob}</a>
-                            <h4>{props.profile.lookingForAJobDescription}</h4>
-                        </div>
+                        <div className={s.photo}>
+                            <div>{props.profile.photos.small}</div>
+                            <div className={s.description}>
+                                <h3>Обо мне</h3>
+                                <h3>Мои социальные сети</h3>
+                                <a href="https://google.com/">{props.profile.contacts.facebook}</a>
+                                <a href="https://google.com/">{props.profile.contacts.website}</a>
+                                <a href="https://google.com/">{props.profile.contacts.vk}</a>
+                                <a href="https://google.com/">{props.profile.contacts.twitter}</a>
+                                <a href="https://google.com/">{props.profile.contacts.instagram}</a>
+                                <a href="https://google.com/">{props.profile.contacts.youtube}</a>
+                                <a href="https://google.com/">{props.profile.contacts.github}</a>
+                                <a href="https://google.com/">{props.profile.contacts.mainLink}</a>
+                                <a href="https://google.com/">{props.profile.fullName}</a>
+                                <a href="https://google.com/">{props.profile.lookingForAJob}</a>
+                                <h4>{props.profile.lookingForAJobDescription}</h4>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
             </div>

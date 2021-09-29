@@ -1,11 +1,6 @@
-/*import React from 'react';*/
-// reducer принимает часть стэйта и action, у которого как минимум есть type
-//  и возвращает преобразованный state
-
-
 import {Dispatch} from "redux";
 import {usersAPI, profileAPI} from "../api/api";
-
+import {PostsType, ProfilesType } from "../types/types";
 
 export enum ACTION_TYPE {
     ADD_POST = "ADD-POST",
@@ -24,24 +19,6 @@ export enum ACTION_TYPE {
     SET_STATUS = "SET_STATUS",
 }
 
-export type PostsType = {
-    id: number
-    message: string
-    likeCount: number
-    img: string
-}
-export type AddPostAT = {
-    type: ACTION_TYPE.ADD_POST,
-    newMessagePost: any
-}
-export type setUserProfileSuccessAT = {
-    type: ACTION_TYPE.SET_USER_PROFILE_SUCCESS,
-    profile: any
-}
-export type SetStatusAT = {
-    type: ACTION_TYPE.SET_STATUS,
-    status: string,
-}
 
 export type ProfileActionType =
     AddPostAT |
@@ -51,8 +28,9 @@ export type ProfileActionType =
 export type InitialStateType = typeof initialState
 
 let initialState = {
-    profile: null,
-    status: "",
+    profile: null as ProfilesType | null,
+    status: '',
+    newPostText: '',
     posts: [
         {
             id: 2,
@@ -94,6 +72,19 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
             return state
     }
 }
+export type AddPostAT = {
+    type: ACTION_TYPE.ADD_POST,
+    newMessagePost: any
+}
+export type setUserProfileSuccessAT = {
+    type: ACTION_TYPE.SET_USER_PROFILE_SUCCESS,
+    profile: ProfilesType| null
+}
+export type SetStatusAT = {
+    type: ACTION_TYPE.SET_STATUS,
+    status: string,
+}
+
 export const addPostAC = (newMessagePost: string): AddPostAT => {
     return {
         type: ACTION_TYPE.ADD_POST,
@@ -107,10 +98,10 @@ export const setStatusAC = (status: string): SetStatusAT => {
         status,
     } as const
 }
-export const setUserProfileSuccess = (profile: any) => {
+export const setUserProfileSuccess = (profile: ProfilesType | null) => {
     return {
         type: ACTION_TYPE.SET_USER_PROFILE_SUCCESS,
-        profile
+        profile,
     } as const
 }
 export const setUserProfile = (userId: string) => {

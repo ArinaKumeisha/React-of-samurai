@@ -20,7 +20,6 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {   // AppSt
         dialogsPage: state.dialogsPage,
     }
 }
-
 const mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {   //dispatch импортируем из redux
     return {
         sendNewMessage: (newMessageBody: string) => {

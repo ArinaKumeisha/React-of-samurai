@@ -6,6 +6,7 @@ import {RouteComponentProps, withRouter} from 'react-router-dom';
 import {setUserProfile, getUserStatus, updateStatus} from "../../redux/profile-reducer";
 import {compose} from "redux";
 import { withAuthRedirect } from '../../hoc/WithAuthRedirects';
+import { ProfilesType } from '../../types/types';
 
 type PathParamsType = {
     userId: string
@@ -33,14 +34,12 @@ class ProfileContainer extends React.Component <PropsType> {
         )
     }
 }
-
 type mapStateToPropsType = {
-    profile: string | null
+    profile: ProfilesType | null
     status: string
     id: string
     isAuth: boolean
 }
-
 type mapDispatchToPropsType = {
     setUserProfile: (userId: string) => void
     getUserStatus: (userId: string) => void
