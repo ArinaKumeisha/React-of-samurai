@@ -2,10 +2,7 @@ import React from 'react';
 import s from "./ProfileInfo.module.css"
 import Preloader from "../../preloader/preloader";
 import {ProfileStatus} from './ProfileStatus';
-import { ProfileType } from '../Profile';
-
-
-
+import { ProfileType } from '../../../types/types';
 const ProfileInfo = (props: ProfileType) => {
     if (!props.profile) {
         return <Preloader/>

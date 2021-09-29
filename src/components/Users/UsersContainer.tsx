@@ -57,7 +57,6 @@ export type MapDispatchToPropsType = {
     getUsers: (currentPage: number, pageSize: number) => void
 }
 
-
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
         users: state.usersPage.users,
@@ -77,7 +76,6 @@ export default compose<React.ComponentType>(
         toggleIsFollowingProgress,
         getUsers: getUsersThunkCreator
     }),
-    withAuthRedirect,
 )(UsersContainer)
 
 
