@@ -3,7 +3,7 @@ import {ACTION_TYPE} from "./profile-reducer";
 
 
 export type InitialStateType = typeof initialState
-type DialogActionType = SendMessageAT
+export type DialogActionType = SendMessageAT
 let initialState = {
     dialogs: [
         {

@@ -1,6 +1,6 @@
 import {Dispatch} from "redux";
 import {usersAPI, profileAPI} from "../api/api";
-import {PostsType, ProfilesType } from "../types/types";
+import {PostsType, ProfilesType} from "../types/types";
 
 export enum ACTION_TYPE {
     ADD_POST = "ADD-POST",
@@ -14,7 +14,7 @@ export enum ACTION_TYPE {
     SET_TOTAL_USER_COUNT = "SET-TOTAL_USER_COUNT",
     TOGGLE_IS_FETCHING = "TOGGLE-IS-FETCHING",
     SET_USER_PROFILE_SUCCESS = "SET_USER_PROFILE_SUCCESS",
-    SET_USER_DATA_SUCCESS = "SET_USER_DATA_SUCCESS",
+    GET_USER_DATA_SUCCESS = "ACTION_TYPE.GET_USER_DATA_SUCCESS",
     TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE-IS_FOLLOWING-PROGRESS",
     SET_STATUS = "SET_STATUS",
     INITIALIZED_SUCCESS = "INITIALIZED-SUCCESS",
@@ -79,7 +79,7 @@ export type AddPostAT = {
 }
 export type setUserProfileSuccessAT = {
     type: ACTION_TYPE.SET_USER_PROFILE_SUCCESS,
-    profile: ProfilesType| null
+    profile: ProfilesType | null
 }
 export type SetStatusAT = {
     type: ACTION_TYPE.SET_STATUS,
@@ -105,21 +105,21 @@ export const setUserProfileSuccess = (profile: ProfilesType | null) => {
         profile,
     } as const
 }
-export const setUserProfile = (userId: string) => {
-    return (dispatch: Dispatch<ProfileActionType>) => {
-        profileAPI.getUserProfile(userId)
-            .then(response => {
-                dispatch(setUserProfileSuccess(response.data))
-            })
+export const setUserProfile = (userId: string) => async (dispatch: Dispatch<ProfileActionType>) => {
+    try {
+        const res = await profileAPI.getUserProfile(userId)
+
+        dispatch(setUserProfileSuccess(res.data))
+    } catch (e) {
+        throw new Error
     }
 }
-export const getUserStatus = (userId: string) => {
-    return (dispatch: Dispatch<ProfileActionType>) => {
-        profileAPI.getStatus(userId)
-            .then(response => {
-                    dispatch(setStatusAC(response.data))
-                }
-            )
+export const getUserStatus = (userId: string) => async (dispatch: Dispatch<ProfileActionType>) => {
+    try {
+        const res = await profileAPI.getStatus(userId)
+        dispatch(setStatusAC(res.data))
+    } catch (e) {
+        throw new Error
     }
 }
 export const updateStatus = (status: string) => {

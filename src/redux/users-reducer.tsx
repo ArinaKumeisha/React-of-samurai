@@ -143,41 +143,42 @@ export const toggleIsFollowingProgress = (isFetching: boolean, userId: number): 
     } as const
 }
 
-export const requestUsers = (page: number, pageSize: number) => {
-    return (dispatch: Dispatch<UsersActionType>) => {
-        dispatch(setCurrentPage(page))
-        dispatch(toggleIsFetching(true))
-        usersAPI.getUsers(page, pageSize)
-            .then(data => {
-                dispatch(toggleIsFetching(false))
-                dispatch(setUsers(data.items))
-                dispatch(setTotalUserCount(data.totalCount))
-            })
+export const requestUsers = (page: number, pageSize: number) => async (dispatch: Dispatch<UsersActionType>) => {
+    dispatch(setCurrentPage(page))
+    dispatch(toggleIsFetching(true))
+    try {
+        const res = await usersAPI.getUsers(page, pageSize)
+
+        dispatch(toggleIsFetching(false))
+        dispatch(setUsers(res.items))
+        dispatch(setTotalUserCount(res.totalCount))
+    } catch (e) {
+        throw new Error
     }
 }
-export const follow = (userId: number) => {
-    return (dispatch: Dispatch<UsersActionType>) => {
-        dispatch(toggleIsFollowingProgress(true, userId))
-        usersAPI.follow(userId)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(followSucces(userId))
-                }
-                dispatch(toggleIsFollowingProgress(false, userId))
-            })
+export const follow = (userId: number) => async (dispatch: Dispatch<UsersActionType>) => {
+    dispatch(toggleIsFollowingProgress(true, userId))
+    try {
+        const res = await usersAPI.follow(userId)
+        if (res.data.resultCode === 0) {
+            dispatch(followSucces(userId))
+        }
+        dispatch(toggleIsFollowingProgress(false, userId))
+    } catch (e) {
+        throw new Error
     }
 }
 
-export const unFollow = (userId: number) => {
-    return (dispatch: Dispatch<UsersActionType>) => {
-        dispatch(toggleIsFollowingProgress(true, userId));
-        usersAPI.unFollow(userId)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(unFollowSuccess(userId))
-                }
-                dispatch(toggleIsFollowingProgress(false, userId))
-            })
+export const unFollow = (userId: number) => async (dispatch: Dispatch<UsersActionType>) => {
+    dispatch(toggleIsFollowingProgress(true, userId));
+    try {
+        const res = await usersAPI.unFollow(userId)
+        if (res.data.resultCode === 0) {
+            dispatch(unFollowSuccess(userId))
+        }
+        dispatch(toggleIsFollowingProgress(false, userId))
+    } catch (e) {
+        throw new Error(e)
     }
 }
 

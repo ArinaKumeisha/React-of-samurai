@@ -2,8 +2,8 @@ import {ACTION_TYPE} from "./profile-reducer";
 import {AnyAction, Dispatch} from "redux";
 import {authAPI} from "../api/api";
 import {ThunkAction} from "redux-thunk";
-import {AppStateType} from "./redux_store";
-import { stopSubmit } from "redux-form";
+import {AppActionsType, AppStateType, AppThunk} from "./redux_store";
+import {FormAction, stopSubmit } from "redux-form";
 import { GetAuthUserType } from "../types/types";
 
 
@@ -17,11 +17,11 @@ export const initialState = {
 }
 type InitialStateType = typeof initialState
 
-export type AuthActionType = GetAuthUserDataSuccesType
+export type AuthActionType = SuccesType| FormAction
 
 export const authReducer = (state = initialState, action: AuthActionType): InitialStateType => {
     switch (action.type) {
-        case ACTION_TYPE.SET_USER_DATA_SUCCESS:
+        case ACTION_TYPE.GET_USER_DATA_SUCCESS:
             return {
                 ...state,
                 ...action.payload,
@@ -32,41 +32,54 @@ export const authReducer = (state = initialState, action: AuthActionType): Initi
     }
 }
 
-type GetAuthUserDataSuccesType = {
-    type: ACTION_TYPE.SET_USER_DATA_SUCCESS,
+type SuccesType = {
+    type: ACTION_TYPE.GET_USER_DATA_SUCCESS,
     payload: GetAuthUserType
 }
-export const getAuthUserDataSucces = (id: string , email: string | null, login: string | null, isAuth: boolean): GetAuthUserDataSuccesType => {  // функции AC
+export const succes = (id: string , email: string | null, login: string | null, isAuth: boolean): SuccesType => {  // функции AC
     return {
-        type: ACTION_TYPE.SET_USER_DATA_SUCCESS,
+        type: ACTION_TYPE.GET_USER_DATA_SUCCESS,
         payload: {id, email, login, isAuth,}
     }
 }
 export const getAuthUserData = () => {
-    return async (dispatch: any) => {
-        let response = await authAPI.me()
-        if (response.data.resultCode === 0) {
-            let {id, email, login} = response.data.data
-            dispatch(getAuthUserDataSucces(id, email, login, true))
+    return async (dispatch: Dispatch<AuthActionType>) => {
+        try {
+            const res = await authAPI.me()
+            if (res.data.resultCode === 0) {
+                let {id, email, login} = res.data.data
+                dispatch(succes(id, email, login, true))
+            }
+        }catch (e){
+            throw new Error(e)
         }
+
     }
 }
-export const login = (email: string, password: string, rememberMe: boolean) => {
-    return async (dispatch: any) => {
-        let response = await authAPI.login(email, password, rememberMe,)
-        if (response.data.resultCode === 0) {
+export const login = (email: string, password: string, rememberMe: boolean):AppThunk => async dispatch => {
+    try {
+        const res = await authAPI.login(email, password, rememberMe,)
+        if (res.data.resultCode === 0) {
             dispatch(getAuthUserData())
         } else {
-            let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error'
+            let message = res.data.messages.length > 0 ? res.data.messages[0] : 'Some error'
             dispatch(stopSubmit("login", {_error: message}))
         }
+    }catch (e) {
+        throw new Error(e)
     }
+
 }
-export const logOut = () => async (dispatch: any) => {
-    let response = await authAPI.logOut()
-    if (response.data.resultCode === 0) {
-        dispatch(getAuthUserDataSucces('', null, null, false))
+export const logOut = () => async (dispatch: Dispatch<AuthActionType>) => {
+    try {
+        const res = await authAPI.logOut()
+        if (res.data.resultCode === 0) {
+            dispatch(succes('', null, null, false))
+        }
+    }catch (e) {
+       throw new Error
     }
+
 }
 
 
