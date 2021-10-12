@@ -36,11 +36,11 @@ export let Users = (props: UsersType) => {
             </div>
             {
                 props.users.map(u => {
+                    debugger
                     return <div key={u.id} className={s.user}>
-
                         <div className={s.common}>
                             <NavLink className={s.photo} to={'./profile/' + u.id}>
-                                <img src={u.photos.small != null ? u.photos.small : avatar}
+                                <img src={u.photos.small !==null ? u.photos.small : avatar}
                                 />
                             </NavLink>
                             <div className={s.followAndDescription}>
@@ -62,12 +62,10 @@ export let Users = (props: UsersType) => {
                                     <div>{u.name}</div>
                                     <div>{u.status}</div>
                                 </div>
-
                                 <div className={s.right}>
                                     <div>{"u.location.country"}</div>
                                     <div>{"u.location.city"}</div>
                                 </div>
-
                             </div>
                         </div>
                     </div>

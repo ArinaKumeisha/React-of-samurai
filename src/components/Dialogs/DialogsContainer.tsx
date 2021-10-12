@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {compose, Dispatch} from "redux";
 import Dialogs from "./Dialogs";
 import { withAuthRedirect } from '../../hoc/WithAuthRedirects';
+import {getDialogsPage} from '../../redux/select'
 
 
 export type MapStatePropsType = {
@@ -17,7 +18,7 @@ export type DialogsPropsType = MapStatePropsType & MapDispatchPropsType
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {   // AppStateType это type всего нашего state!!! и возвращает частичку state из редьюсера
     return {
-        dialogsPage: state.dialogsPage,
+        dialogsPage: getDialogsPage(state),
     }
 }
 const mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {   //dispatch импортируем из redux

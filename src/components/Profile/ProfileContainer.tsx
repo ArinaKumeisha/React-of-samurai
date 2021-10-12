@@ -7,6 +7,7 @@ import {setUserProfile, getUserStatus, updateStatus} from "../../redux/profile-r
 import {compose} from "redux";
 import { withAuthRedirect } from '../../hoc/WithAuthRedirects';
 import { ProfilesType } from '../../types/types';
+import {getProfile, getStatus, getIsAuth, getId} from '../../redux/select'
 
 type PathParamsType = {
     userId: string
@@ -50,10 +51,10 @@ type mapDispatchToPropsType = {
 }
 let mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     return {
-        profile: state.profilePage.profile,
-        status: state.profilePage.status,
-        isAuth: state.auth.isAuth,
-        id: state.auth.id,
+        profile: getProfile(state),
+        status: getStatus(state),
+        isAuth: getIsAuth(state),
+        id: getId(state),
     }
 }
 export default compose<React.ComponentType>(

@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {AppStateType} from "../../../redux/redux_store";
 import {Dispatch} from "redux";
 import { PostsType } from '../../../types/types';
+import {getPosts} from '../../../redux/select'
 
 
 type MapStatePropsType = {
@@ -19,7 +20,7 @@ export type MyPostPropsType = MapStatePropsType & MapDispatchToPropsType
 
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        posts: state.profilePage.posts,
+        posts: getPosts(state),
     }
 }
 

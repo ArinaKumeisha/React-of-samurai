@@ -11,7 +11,7 @@ import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import NewForm from './components/New/New';
 import {connect, ConnectedProps, useSelector} from 'react-redux';
-import {setAuthUserData} from './redux/auth-reducer'
+import {getAuthUserData} from './redux/auth-reducer'
 import {compose} from 'redux';
 import {AppStateType} from './redux/redux_store';
 import Preloader from './components/preloader/preloader';
@@ -23,7 +23,7 @@ class App extends React.Component<ConectedType> {
         this.props.inicializedApp()
     }
     render() {
-        if (!this.props.inicializedApp) {
+        if (!this.props.inicialized) {
             return <Preloader/>
         }
         return (
@@ -56,4 +56,5 @@ const mapStateToProps = (state: AppStateType) => {
 let connector = connect(mapStateToProps, {inicializedApp})
 type ConectedType = ConnectedProps<typeof connector>
 export default connector(App)
+
 

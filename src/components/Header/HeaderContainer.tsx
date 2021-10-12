@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from "./Header";
 import {AppStateType} from "../../redux/redux_store";
-import {setAuthUserData, logOut} from "../../redux/auth-reducer";
-
+import {getAuthUserData, logOut} from "../../redux/auth-reducer";
+import {getIsAuth, getLogin} from '../../redux/select'
 import {connect, ConnectedProps} from "react-redux";
 class HeaderContainer extends React.Component<connectorType> {
 
@@ -19,8 +19,8 @@ class HeaderContainer extends React.Component<connectorType> {
 
 const mapStateToProps = (state: AppStateType) => {
     return {
-        isAuth: state.auth.isAuth,
-        login: state.auth.login,
+        isAuth: getIsAuth(state),
+        login: getLogin(state),
     }
 }
 

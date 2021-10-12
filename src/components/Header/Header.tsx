@@ -16,7 +16,6 @@ type HeaderPropsType = {
                 { props.isAuth
                     ? <div>{props.login} - <button onClick={props.logOut}>Log out</button></div>
                     : <NavLink to={"./login"}>Login</NavLink> }
-
             </div>
     </header>
     )}

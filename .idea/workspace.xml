@@ -4,17 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c72d509b-5115-47ed-9a3f-5ccfec7bdf29" name="Default Changelist" comment="refactoring, add type.tsx">
-      <change afterPath="$PROJECT_DIR$/src/redux/app-reducer.ts" afterDir="false" />
+    <list default="true" id="c72d509b-5115-47ed-9a3f-5ccfec7bdf29" name="Default Changelist" comment="80 lesson - инизиализация приложения(создание appReducer)">
+      <change afterPath="$PROJECT_DIR$/src/redux/select.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/DialogsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/DialogsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/myPosts/MyPostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/myPosts/MyPostsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Users/Users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/Users.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Users/UsersContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/UsersContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/profile-reducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/profile-reducer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/redux_store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/redux_store.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/app-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/auth-reducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/auth-reducer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/users-reducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/users-reducer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +46,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -105,7 +112,11 @@
       <workItem from="1632388942593" duration="10101000" />
       <workItem from="1632772882961" duration="1672000" />
       <workItem from="1632861301532" duration="5103000" />
-      <workItem from="1632921748203" duration="16211000" />
+      <workItem from="1632921748203" duration="16519000" />
+      <workItem from="1633091673196" duration="915000" />
+      <workItem from="1633700087070" duration="5657000" />
+      <workItem from="1633770331628" duration="2353000" />
+      <workItem from="1634034445332" duration="2894000" />
     </task>
     <task id="LOCAL-00001" summary="users css">
       <created>1629806572299</created>
@@ -205,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632928185017</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="80 lesson - инизиализация приложения(создание appReducer)">
+      <created>1632940834566</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1632940834566</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,6 +255,7 @@
     <MESSAGE value="78 React JS - login and log out api" />
     <MESSAGE value="79 React JS - stopSubmit(redux-form)" />
     <MESSAGE value="refactoring, add type.tsx" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring, add type.tsx" />
+    <MESSAGE value="80 lesson - инизиализация приложения(создание appReducer)" />
+    <option name="LAST_COMMIT_MESSAGE" value="80 lesson - инизиализация приложения(создание appReducer)" />
   </component>
 </project>

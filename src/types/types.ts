@@ -45,7 +45,7 @@ export type ProfileType = {
 }
 //auth
 
-export type SetAuthUserType = {
+export type GetAuthUserType = {
     id: string
     email: string | null
     login: string | null
