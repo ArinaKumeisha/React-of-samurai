@@ -1,15 +1,13 @@
 import React from 'react';
 import s from "./ProfileInfo.module.css"
 import Preloader from "../../preloader/preloader";
-import {ProfileStatus} from './ProfileStatus';
 import {ProfileType} from '../../../types/types';
+import { ProfileStatusWithHooks } from './ProfileStatusWithHooks';
 
 const ProfileInfo = (props: ProfileType) => {
     if (!props.profile) {
         return <Preloader/>
     }
-
-    console.log(props)
 
     return (
         < div>
@@ -20,7 +18,7 @@ const ProfileInfo = (props: ProfileType) => {
                 <img className={s.info}
                      src="https://shutniki.club/wp-content/uploads/2019/12/devushka_v_ochkah_risunok_4_06143556.jpg"/>
 
-                <ProfileStatus
+                <ProfileStatusWithHooks
                     status={props.status}
                     updateStatus={props.updateStatus}
                 />
