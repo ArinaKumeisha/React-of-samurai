@@ -1,15 +1,15 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
 import {MyPostPropsType} from "./MyPostsContainer";
 import {Field, reduxForm} from 'redux-form';
-import {maxLengthCreator, required } from '../../../utils/validators/validators';
+import {maxLengthCreator, required} from '../../../utils/validators/validators';
 import {Textarea} from '../../../assets/FormsControls';
 
 
-
 let maxLength10 = maxLengthCreator(10)
-const MyPosts = (props: MyPostPropsType)=> {
+
+const MyPosts = React.memo((props: MyPostPropsType) => {
     const addPost = (value: any) => {
         props.addPost(value.newPost)
     }
@@ -31,7 +31,7 @@ const MyPosts = (props: MyPostPropsType)=> {
             <PostReduxForm onSubmit={addPost}/>
         </div>
     )
-}
+})
 
 export const PostForm = (props: any) => {
     return (
@@ -47,5 +47,5 @@ export const PostForm = (props: any) => {
         </form>
     )
 }
- const PostReduxForm = reduxForm({form: 'contact'})(PostForm)
+const PostReduxForm = reduxForm({form: 'contact'})(PostForm)
 export default MyPosts;
