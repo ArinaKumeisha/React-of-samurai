@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
 import {MyPostPropsType} from "./MyPostsContainer";
@@ -10,30 +10,31 @@ import {Textarea} from '../../../assets/FormsControls';
 let maxLength10 = maxLengthCreator(10)
 
 const MyPosts = React.memo((props: MyPostPropsType) => {
+
     const addPost = (value: any) => {
         props.addPost(value.newPost)
     }
+    const postElements = props.posts.map(p =>
+        <Post
+            key={p.id}
+            id={p.id}
+            message={p.message}
+            likeCount={p.likeCount}
+            img={p.img}
+        />)
     return (
         <div className={s.postBlock}>
             <hr/>
-            {
-                props.posts.map(p =>
-                    <Post
-                        key={p.id}
-                        id={p.id}
-                        message={p.message}
-                        likeCount={p.likeCount}
-                        img={p.img}
-                    />)
-            }
+            {postElements}
             <hr/>
             <h3>My post</h3>
-            <PostReduxForm onSubmit={addPost}/>
+            <PostReduxForm onSubmit={addPost} />
         </div>
     )
 })
 
 export const PostForm = (props: any) => {
+
     return (
         <form
             onSubmit={props.handleSubmit}>

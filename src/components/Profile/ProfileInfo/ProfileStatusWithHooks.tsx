@@ -32,9 +32,9 @@ export const ProfileStatusWithHooks = (props: ProfileStatusType) => {
                             autoFocus/></div>
                 :
                 <div>
-                <span
-                    onDoubleClick={activeMode}>{props.status || '-----'}
-                </span>
+                    <h3><i
+                        onDoubleClick={activeMode}>{props.status || '-----'}
+                    </i></h3>
                 </div>
             }
         </>

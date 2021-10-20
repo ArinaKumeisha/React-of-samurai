@@ -1,6 +1,7 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
+    color: whitesmoke;
 }
 
 .dialog img {
@@ -14,7 +15,7 @@
 }
 
 .dialogsItems .active {
-    color: red;
+    color: whitesmoke;
 }
 
 .messages {
@@ -22,6 +23,7 @@
 }
 
 .message {
+    color: whitesmoke;
 }
 
 

@@ -2,7 +2,7 @@
 
 .nav{
     grid-area: n;
-    background-color:lightcoral;
+    background-color: #494949;
     padding: 20px;
 }
 
@@ -18,7 +18,7 @@ a.activeLink{
     color:white
 }
 .post{
-    color:red;
+    color:whitesmoke;
 }
 .item.active{
     color:gold

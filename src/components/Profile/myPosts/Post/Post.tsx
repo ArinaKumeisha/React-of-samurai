@@ -1,21 +1,20 @@
 import React from "react";
-import { PostsType } from "../../../../types/types";
+import {PostsType} from "../../../../types/types";
 import s from "./post.module.css"
 
 
-
-
-export const Post = (props:PostsType) => {
-
+export const Post = (props: PostsType) => {
     return (
         <div className={s.item}>
-            {props.message}
-
+            <p className={s.message}>{props.message}</p>
             <div>
-                <span>like </span>{props.likeCount}<div><img src={props.img}/></div>
-            </div>
+                <span>like </span>{props.likeCount}
+                <div>
+                    <img src={props.img}/>
                 </div>
-                )
+            </div>
+        </div>
+    )
 
 }
 export default Post;

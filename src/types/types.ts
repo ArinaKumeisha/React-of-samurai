@@ -1,4 +1,3 @@
-
 //profile
 export type PostsType = {
     id: number
@@ -7,13 +6,17 @@ export type PostsType = {
     img: string
 }
 export type ProfilesType = {
-    userId: string
+    userId: number
     lookingForAJob: boolean
     lookingForAJobDescription: string
     fullName: string
-    contacts:ContactsType
+    contacts: ContactsType
     photos: PhotosType
-
+}
+export type ProfileType = {
+    profile: ProfilesType | null
+    status: string
+    updateStatus: (status: string) => void
 }
 export type PhotosType = {
     small: string | null
@@ -34,15 +37,11 @@ export type UserType = {
     id: number
     name: string
     status: string
-    photos:PhotosType
+    photos: PhotosType
     followed: boolean
     /*totalCount: number*/
 }
-export type ProfileType = {
-    profile: ProfilesType | null
-    status: string
-    updateStatus: (status: string) => void
-}
+
 //auth
 
 export type GetAuthUserType = {

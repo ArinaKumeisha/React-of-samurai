@@ -7,7 +7,7 @@ export const Input = (props: any) => {
     return (
         <div className={s.container}>
             <div className={s.formControl + ' ' + (hasError ? s.error : '')}>
-                <input {...props.input}/>
+                <input {...input}/>
                 {hasError && <span className={`${s.formControl} ${s.error}`}>{meta.error}</span>}
             </div>
         </div>
@@ -19,7 +19,7 @@ export const Textarea = (props: any) => {
     return (
         <div className={s.container}>
             <div className={s.formControl + ' ' + (hasError ? s.error : '')}>
-                <textarea {...props.input}{...props}/>
+                <textarea {...input}{...props}/>
                 {hasError && <span className={`${s.formControl} ${s.error}`}>{meta.error}</span>}
             </div>
         </div>

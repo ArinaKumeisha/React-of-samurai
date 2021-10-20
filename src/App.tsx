@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
-import {Route, withRouter} from "react-router-dom";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Music";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -10,12 +9,11 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import NewForm from './components/New/New';
-import {connect, ConnectedProps, useSelector} from 'react-redux';
-import {getAuthUserData} from './redux/auth-reducer'
-import {compose} from 'redux';
 import {AppStateType} from './redux/redux_store';
 import Preloader from './components/preloader/preloader';
 import {inicializedApp} from './redux/app-reducer'
+import { Route } from 'react-router';
+import {connect, ConnectedProps} from 'react-redux';
 
 
 class App extends React.Component<ConectedType> {

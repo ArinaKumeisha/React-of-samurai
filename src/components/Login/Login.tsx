@@ -2,9 +2,8 @@ import React from 'react';
 import {connect, ConnectedProps, useSelector} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {Field, InjectedFormProps, reduxForm} from 'redux-form';
-import {ThunkAction} from 'redux-thunk';
 import {Input} from "../../assets/FormsControls";
-import {AuthActionType, login} from '../../redux/auth-reducer';
+import {login} from '../../redux/auth-reducer';
 import {AppStateType} from '../../redux/redux_store';
 import {maxLengthCreator, required} from "../../utils/validators/validators";
 import s from '../../assets/FormsControls.module.css'
@@ -16,6 +15,7 @@ type FormDataType = {
 }
 const Login = (props: LoginPropsType) => {
     const isAuth = useSelector<AppStateType, boolean>(state => state.auth.isAuth)
+
     const onSubmit = (data: FormDataType,) => {
         props.login(data.password, data.email, data.rememberMe);
     }
@@ -24,36 +24,37 @@ const Login = (props: LoginPropsType) => {
     }
     return (
         <div>
-            <h1>{'Login'}</h1>
+            <h1><i>{'Login'}</i></h1>
             <LoginReduxForm onSubmit={onSubmit}/>
         </div>
     )
 };
 const maxLength12 = maxLengthCreator(30)
-export const LoginForm = (props: InjectedFormProps<FormDataType>) => {
+export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = props => {
+    const {handleSubmit,error } = props
     return (
-        <form onSubmit={props.handleSubmit}>
-            <h3>Login</h3>
+        <form onSubmit={handleSubmit}>
+            <i>Login</i>
             <Field
                 component={Input}
                 name={'password'}
                 type='text'
                 validate={[required, maxLength12,]}/>
-            <h3>Password</h3>
+            <i>Password</i>
             <Field
                 component={Input}
                 name={'email'}
                 type="password"
                 placeholder={'Password'}
                 validate={[required, maxLength12,]}/>
-            <p>remember me</p>
+            <i>remember me</i>
             <Field
                 component={'input'}
                 name={'remember me'}
                 type={'checkbox'}
             />
-            {props.error && <div className={s.comonError}>
-                {props.error}
+            {error && <div className={s.commonError}>
+                {error}
             </div>
             }
 
@@ -72,3 +73,4 @@ const LoginReduxForm = reduxForm
     const connector = connect(null, {login})
     type LoginPropsType = ConnectedProps <typeof connector>;
         export default connector(Login);
+

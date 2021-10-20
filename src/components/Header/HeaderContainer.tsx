@@ -1,9 +1,10 @@
 import React from 'react';
 import Header from "./Header";
 import {AppStateType} from "../../redux/redux_store";
-import {getAuthUserData, logOut} from "../../redux/auth-reducer";
+import {logOut} from "../../redux/auth-reducer";
 import {getIsAuth, getLogin} from '../../redux/select'
 import {connect, ConnectedProps} from "react-redux";
+
 class HeaderContainer extends React.Component<connectorType> {
 
     render() {

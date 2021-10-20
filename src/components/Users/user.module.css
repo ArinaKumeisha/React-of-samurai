@@ -5,10 +5,9 @@
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    border: 5px solid #f3c9f3;
     border-radius: 10px;
     margin-top: 15px;
-    background-image: url("https://funart.pro/src.php?src=https://funart.pro/uploads/posts/2021-04/thumbs/1618521949_1-funart_pro-p-oboi-fon-bledno-rozovii-fon-1.jpg&w=400&h=300");
+    background-color: #656262;
 }
 
 .photo {
