@@ -21,7 +21,7 @@ export function Dialogs(props: DialogsPropsType) {
                         return (
                             <div className={s.dialog + " " + s.active}>
                                 {d.name}
-                                <img src={d.img}/>
+                                <img src={d.img} alt={'people'}/>
                             </div>)
                     })}
             </div>

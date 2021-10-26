@@ -1,9 +1,7 @@
-import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
 import {AppStateType} from '../../redux/redux_store';
-import s from "../New/New.module.css"
-import {addNewMessageForm, initialStateType, messageForStateType} from './new-reducer';
+import {addNewMessageForm} from './new-reducer';
 
 
 const NewForm = () => {

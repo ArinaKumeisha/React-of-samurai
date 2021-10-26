@@ -4,7 +4,7 @@ import {DialogActionType, dialogsReducer} from "./dialogs-reducer";
 import {UsersActionType, usersReducer} from "./users-reducer";
 import {AuthActionType, authReducer} from "./auth-reducer";
 import thunkMiddleWare, {ThunkAction} from "redux-thunk"
-import reducer, {reducer as formReducer} from 'redux-form'
+import {reducer as formReducer} from 'redux-form'
 import {NewReducer} from "../components/New/new-reducer";
 import {AppActionsReducerType, appReducer} from "./app-reducer";
 

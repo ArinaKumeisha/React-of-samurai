@@ -1,4 +1,3 @@
-import React from 'react';
 import {addPostAC, deletePostAC} from "../../../redux/profile-reducer";
 import {connect} from "react-redux";
 import {AppStateType} from "../../../redux/redux_store";

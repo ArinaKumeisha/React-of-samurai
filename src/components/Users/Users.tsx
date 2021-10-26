@@ -16,6 +16,7 @@ export let Users: React.FC<UsersType> = props => {
             <div className={s.users}>
                 {
                     props.users.map(u => <EveryUser
+                        key={u.id}
                         user={u}
                         follow={props.follow}
                         unFollow={props.unFollow}

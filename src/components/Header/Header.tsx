@@ -11,7 +11,7 @@ type HeaderPropsType = {
  const Header  = (props: HeaderPropsType) => {
     return (
         <header className={s.header}>
-        <img src ='https://i1.7fon.org/thumb/z134398.jpg' />
+        <img src ='https://i1.7fon.org/thumb/z134398.jpg' alt ='label'/>
             <div className={s.loginBlock}>
                 { props.isAuth
                     ? <div>{props.login} - <button onClick={props.logOut}>Log out</button></div>

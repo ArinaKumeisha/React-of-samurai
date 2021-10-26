@@ -10,7 +10,7 @@ export const Post = (props: PostsType) => {
             <div>
                 <span>like </span>{props.likeCount}
                 <div>
-                    <img src={props.img}/>
+                    <img src={props.img} alt={'friend'}/>
                 </div>
             </div>
         </div>

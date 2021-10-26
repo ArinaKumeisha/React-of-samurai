@@ -1,4 +1,3 @@
-import {Dispatch} from "redux"
 import {getAuthUserData} from "./auth-reducer"
 import {ACTION_TYPE} from "./profile-reducer"
 import {AppThunk} from "./redux_store"

@@ -1,7 +1,6 @@
 import React, {ComponentType} from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import {PropsType} from '../components/Profile/ProfileContainer';
 import {AppStateType} from '../redux/redux_store';
 
 
@@ -22,7 +21,7 @@ export function withAuthRedirect<T>(Component: ComponentType<T>) {
         return <Component  {...restProps as T}/>
     }
 
-    let ConectedRedirectComponent = connect(mapStateToProps)(RedirectComponent)
-    return ConectedRedirectComponent
+    return  connect(mapStateToProps)(RedirectComponent)
+
 }
 

@@ -19,7 +19,7 @@ const ProfileInfo: React.FC <ProfileType>=props => {
 
     return (
         <>
-            <img src={phone} className={s.item}/>
+            <img src={phone} className={s.item}  alt={'phone'}/>
             <div className={s.block}>
                 <div>
                     <img src={
@@ -28,7 +28,7 @@ const ProfileInfo: React.FC <ProfileType>=props => {
                             profile.photos.large ?
                                 profile.photos.large :
                                 avatar}
-                         className={s.info}
+                         className={s.info} alt={'photos'}
                     />
                     <ProfileStatusWithHooks
                         status={status}
